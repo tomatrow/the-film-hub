@@ -1,0 +1,36 @@
+.lum-lightbox {
+    &.lum-open {
+        z-index: 50;
+    }
+    // .lum-close-button {
+    // }
+    .lum-lightbox-inner {
+        // background-color: rgba(0, 0, 0, 0.9);
+        .lum-lightbox-image-wrapper {
+            .lum-img {
+                margin: auto;
+            }
+            // .lum-lightbox-caption {
+            //     .lum-thumb.current {
+            //         filter: brightness(50%);
+            //     }
+            // }
+        }
+        // .lum-gallery-button {
+        //     position: absolute;
+        //     top: 50%;
+        //     padding: 1rem;
+        //     min-width: 6rem;
+        //     background-color: rgba(0, 0, 0, 0.4);
+        //     color: white;
+        //     text-transform: uppercase;
+        //     border-radius: 0.75rem;
+        //     &.lum-previous-button {
+        //         left: 1rem;
+        //     }
+        //     &.lum-next-button {
+        //         right: 1rem;
+        //     }
+        // }
+    }
+}
