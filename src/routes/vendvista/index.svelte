@@ -6,15 +6,13 @@
     import {
         Comment,
         Hero,
-        Button,
-        Field,
         Link,
         Section,
         LogoSection,
         VideoSection,
         FormSection
     } from "../../lib/components"
-    import { logo, comments, locations, backgrounds } from "../../lib/common/data"
+    import { comments, locations, backgrounds } from "../../lib/common/data"
     import { onMount, onDestroy } from "svelte"
 
     let Carousel

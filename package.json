@@ -4,7 +4,8 @@
     "scripts": {
         "dev": "svelte-kit dev",
         "build": "svelte-kit build",
-        "start": "svelte-kit start"
+        "preview": "svelte-kit preview",
+        "build-icons": "fish --command 'trash src/lib/icons; and node scripts/icons src/lib/icons && touch src/lib/icons/*'"
     },
     "devDependencies": {
         "@felte/reporter-tippy": "^0.2.9",

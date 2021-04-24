@@ -5,8 +5,6 @@
     import { links } from "../../lib/common/stores"
     import { assets } from "$app/paths"
     import {
-        Button,
-        Field,
         Link,
         Section,
         LogoSection,
@@ -16,16 +14,16 @@
         Hero
     } from "../../lib/components"
     import { comments, locations } from "../../lib/common/data"
-    import { CoffeeIcon, HomeIcon, UsersIcon, CameraIcon, NavigationIcon } from "../../lib/icons"
+    import { Hotel, Camera, Dining, People, Sun, Tree } from "../../lib/discount-icons"
     import { onMount, onDestroy } from "svelte"
 
     const logos = [
-        { title: "Dining", icon: CoffeeIcon },
-        { title: "Lodging", icon: HomeIcon },
-        { title: "Filming Locations", icon: UsersIcon },
-        { title: "Cast & Crew", icon: CameraIcon },
-        { title: "Equipment", icon: NavigationIcon },
-        { title: "And More", icon: CoffeeIcon }
+        { title: "Dining", icon: Dining },
+        { title: "Lodging", icon: Hotel },
+        { title: "Filming Locations", icon: Tree },
+        { title: "Cast & Crew", icon: People },
+        { title: "Equipment", icon: Camera },
+        { title: "And More", icon: Sun }
     ]
 
     onMount(() => ($links = [{ href: "/vendvista", title: "Are you a vendor?" }]))
@@ -77,7 +75,7 @@
     <div class="text-secondary flex flex-wrap p-8 uppercase">
         {#each logos as { title, icon }}
             <div class="space-x-2 flex items-center p-8 w-full sm:w-1/2">
-                <svelte:component this={icon} class="flex-shrink-0 w-20 h-20 text-black" />
+                <svelte:component this={icon} class="flex-shrink-0 w-24 h-24 text-black" />
                 <h3 class="font-bold text-xl">{title}</h3>
             </div>
         {/each}

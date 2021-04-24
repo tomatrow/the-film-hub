@@ -1,0 +1,6 @@
+export { default as Hotel } from "./Hotel.svelte"
+export { default as Camera } from "./Camera.svelte"
+export { default as Dining } from "./Dining.svelte"
+export { default as People } from "./People.svelte"
+export { default as Sun } from "./Sun.svelte"
+export { default as Tree } from "./Tree.svelte"
