@@ -15,7 +15,7 @@
         Comment,
         Hero
     } from "../../lib/components"
-    import { logo, comments, locations, backgrounds } from "../../lib/common/data"
+    import { comments, locations } from "../../lib/common/data"
     import { CoffeeIcon, HomeIcon, UsersIcon, CameraIcon, NavigationIcon } from "../../lib/icons"
     import { onMount, onDestroy } from "svelte"
 
