@@ -1,8 +1,8 @@
 devDependencies:
   '@felte/reporter-tippy': 0.2.9_tippy.js@6.3.1
   '@sveltejs/adapter-node': 1.0.0-next.16
-  '@sveltejs/adapter-static': 1.0.0-next.5
-  '@sveltejs/kit': 1.0.0-next.87_svelte@3.37.0+vite@2.2.1
+  '@sveltejs/adapter-static': 1.0.0-next.6
+  '@sveltejs/kit': 1.0.0-next.88_svelte@3.37.0+vite@2.2.1
   '@tailwindcss/aspect-ratio': 0.2.0
   autoprefixer: 10.2.5_postcss@8.2.12
   cssnano: 5.0.1_postcss@8.2.12
@@ -123,11 +123,11 @@ packages:
     dev: true
     resolution:
       integrity: sha512-XXZtiyX8dT1shmiKF2DwB2mCrMrUzFVRItYAV0B3BFF+U5775hpNS5krgtZnJdbA1AoW0Ay2OT+u6MKeQ5/KUQ==
-  /@sveltejs/adapter-static/1.0.0-next.5:
+  /@sveltejs/adapter-static/1.0.0-next.6:
     dev: true
     resolution:
-      integrity: sha512-ITZYE+y2oh8Q3GSUpuxW4VwWpTICLxqr/W0XP7zhRBicD99PcLoq6fPjlnpYbk8/UR+tSCEuIGrhAb+3/Bt2mQ==
-  /@sveltejs/kit/1.0.0-next.87_svelte@3.37.0+vite@2.2.1:
+      integrity: sha512-6TF2X/ARSo0bjoV3bh0kctcW9JYkLSb1cNdGSF0Mx26A9lSYyzftKUzLOFa/2hbLFseqf+FJYLeJtN9WOnII7A==
+  /@sveltejs/kit/1.0.0-next.88_svelte@3.37.0+vite@2.2.1:
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.7_svelte@3.37.0+vite@2.2.1
       cheap-watch: 1.0.3
@@ -142,7 +142,7 @@ packages:
       svelte: ^3.32.1
       vite: ^2.1.0
     resolution:
-      integrity: sha512-63plwv3ikGnCol/HEf3vRkjx2AeShYC39IRI9+BVJjNzb7CqVOUU9AMuOIBG1b7AmhPJzPbtkf33HDs33I27yg==
+      integrity: sha512-4N+c0IyI8WOlhWA0cDb7EJwEHcfxUqjdJGyBYjRMx9VZ5Fe4RAul4cDl+iQ4JO2kbWSltprwBYs39WwOsvMBbQ==
   /@sveltejs/vite-plugin-svelte/1.0.0-next.7_svelte@3.37.0+vite@2.2.1:
     dependencies:
       '@rollup/pluginutils': 4.1.0
