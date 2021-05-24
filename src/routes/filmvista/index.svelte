@@ -38,14 +38,16 @@
 </svelte:head>
 
 <Hero>
-    <svelte:fragment slot="title">Register to get Film Friendly Badge</svelte:fragment>
+    <svelte:fragment slot="title"
+        >Register to get your Film Friendly Badge for Discounts</svelte:fragment
+    >
     <svelte:fragment slot="blurb"
-        >The perfect, versatile, ﬁlm-friendly backdrop for all ﬁlm projects that need a viable and
-        competitive alternative.</svelte:fragment
+        >Vista, Ca is the perfect, versatile, ﬁlm-friendly backdrop for all ﬁlm projects that need a
+        viable and competitive alternative.</svelte:fragment
     >
     <Form formId="" class="w-full md:w-1/2">
         <Field required name="confimation_documentation" type="file" accept="image/*">
-            Upload Image: Permit number and document or Film Hub Stage booking confirmation
+            Upload Image: Permit number document or Film Hub Stage booking confirmation
         </Field>
         <Field {...defaults.text} required name="full_name">Name</Field>
         <Field {...defaults.text} required name="company">Company</Field>
@@ -59,17 +61,15 @@
             class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
             slot="submit"
         >
-            Register Your Permit Reservations Here
+            Register Your Permit Number Here
         </Button>
     </Form>
 </Hero>
 
 <VideoSection>
-    <h2 class="text-primary uppercase font-bold text-3xl">Every Street a Unique Movie Set</h2>
-    <p>
-        Vista is a Climactic Wonderland and has been rated the best weather in the country; boasting
-        340 exterior shooting days out of the year.
-    </p>
+    <h2 class="text-primary uppercase font-bold text-3xl">
+        Vista California - A Rare Find for Film makers <br /> Every Street is a Unique Movie Set
+    </h2>
     <p>
         The historic district is a premier “Americana” Film Set; comprised of independent and family
         owned restaurants, pubs and shops. Its charm lies in the preservation of its historic
@@ -83,6 +83,10 @@
     <p>
         The surrounding hillsides provide stunning locations such as French Farmhouse estates,
         castles, western sets and other unique and hard to find locations.
+    </p>
+    <p>
+        Vista is a Climactic Wonderland and has been rated the best weather in the country; boasting
+        340 exterior shooting days out of the year.
     </p>
 </VideoSection>
 
@@ -125,11 +129,10 @@
 </Section>
 
 <FormSection>
-    <svelte:fragment slot="title">Register Your Permit Reservations Now</svelte:fragment>
+    <svelte:fragment slot="title">Register Your Permit number Now</svelte:fragment>
     <svelte:fragment slot="blurb"
-        >Learn more about popular and unique filming locations, receive info on how to obtain a
-        filming permit and a complete directory of all “Film Friendly” vendors who offer exclusive
-        discounts to film makers.
+        >Receive a complete directory of all “Film Friendly” vendors who offer exclusive discounts
+        to film makers.
         <br />
         Film Permits for City locations are handled professionally by our quick and courteous Chirmere
         Harris at the city of Vista. She is your go to girl for any questions on permits, <Link
@@ -146,7 +149,7 @@
             class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
             slot="submit"
         >
-            Register Your Permit Reservations Here
+            Register Your Permit number Here
         </Button>
     </Form>
 </FormSection>

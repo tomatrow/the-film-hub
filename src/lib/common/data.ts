@@ -23,6 +23,12 @@ export const logos = [
 
 export let comments = [
     {
+        body: "This is another great vision of Jim’s and his daughter Lauren, who designed the Hub. There are a lot of good, professional people around North County. But there is not a common place available where people with the same interest can go and even co-work on projects. Having the Hub will bring together a lot of talents under one roof.",
+        author: "Elias Acosta",
+        title: " Director, Inspired Images Studio",
+        src: "/assets/headshots/elias-a.webp"
+    },
+    {
         src: "/assets/headshots/shaun-f.webp",
         body: "I feel like the creative community can be very isolating, that’s why its so beautiful having a space where the vision is community, the vision is inspiration, the vision is to collaborate. Therefore I want to bring in as many people as I can to have the opportunity to cultivate and create something that hasn’t been made before.",
         author: "Shaun Frederickson",
@@ -101,7 +107,6 @@ export const gallery = [
     "/assets/gallery/moonlight-ext-day.webp",
     "/assets/gallery/old-city-sign-ext-day.webp",
     "/assets/gallery/pepper-tree-ext-day.webp",
-    "/assets/gallery/pigs-fly-1-int-day.webp",
     "/assets/gallery/pigs-fly-3-int-day.webp",
     "/assets/gallery/preschool-ext-day.webp",
     "/assets/gallery/rainforest-ext-day.webp",

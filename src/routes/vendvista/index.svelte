@@ -18,7 +18,7 @@
     import { onMount, onDestroy } from "svelte"
 
     onMount(async () => {
-        $links = [{ href: "/filmvista", title: "Are you a filmer?" }]
+        $links = [{ href: "/filmvista", title: "Are you a film maker?" }]
     })
     onDestroy(() => ($links = []))
 
@@ -51,7 +51,7 @@
                 blob
                 secondary
             >
-                Learn More
+                Submit
             </Button>
         </div>
     </Form>
@@ -59,9 +59,9 @@
 
 <VideoSection
     ><h2 class="text-primary uppercase font-bold text-3xl">
-        The film hub is a world class production facility that attracts “x” amount of film makers
-        from “x”. In partnership with the vista chamber of commerce the “film friendly city”
-        incentive program was started.
+        The Film Hub is a world Class Production facility is drawing the attention of Film makers
+        from all over the world. Working alongside the City of Vista and the Chamber of Commerce The
+        Film Friendly City incentive program was started.
     </h2></VideoSection
 >
 
@@ -96,8 +96,6 @@
         filming in Vista, giving you an increase in exposure for your goods and services. A
         storefront window Sticker will indicate all participating vendors in the downtown area.
     </p>
-
-    <Link secondary blob class="uppercase" href="/">Learn More</Link>
 </LogoSection>
 
 <Section
@@ -116,8 +114,8 @@
         </div>
         <p class="text-2xl">
             Think your location in Vista, Ca is perfect for someones upcoming film project? Want to
-            help the exposure of your business by offering incoming film makers a discount? Contact
-            Us Today and join the “Film Friendly City” program as a featured vendor.
+            help the exposure of your business by offering incoming film makers a discount? Join the
+            “Film Friendly City” program as a featured vendor.
         </p>
     </div>
 </Section>

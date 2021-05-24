@@ -24,7 +24,7 @@
             /></Link
         >
         <div class="space-x-2 flex items-center flex-shrink-0 ml-auto pb-2">
-            {#each $links.concat([{ href: "/", title: "Learn More" }]) as { title, href }}
+            {#each $links as { title, href }}
                 <Link class="text-center uppercase font-bold text-xs" {href}>{title}</Link>
             {/each}
 

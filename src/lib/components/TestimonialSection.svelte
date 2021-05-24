@@ -4,6 +4,7 @@
     import Section from "./Section.svelte"
     import Button from "./Button.svelte"
     import Comment from "./Comment.svelte"
+    import { ChevronLeftIcon, ChevronRightIcon } from "../icons"
 
     let Carousel
     onMount(
@@ -21,10 +22,10 @@
         <Carousel duration={600} let:showPrevPage let:showNextPage>
             <div
                 slot="prev"
-                class="m-auto flex items-center justify-center w-24 h-24"
+                class="m-auto flex items-center justify-center w-8 md:w-24 h-8 md:h-24"
                 style="background-color: rgba(0,0,0, 0.02)"
             >
-                <Button on:click={showPrevPage}>PREV</Button>
+                <Button on:click={showPrevPage}><ChevronLeftIcon strokeWidth={0.5} /></Button>
             </div>
             {#each comments as comment}
                 <div class="flex justify-center">
@@ -33,10 +34,10 @@
             {/each}
             <div
                 slot="next"
-                class="m-auto flex items-center justify-center w-24 h-24"
+                class="m-auto flex items-center justify-center w-8 md:w-24 h-8 md:h-24"
                 style="background-color: rgba(0,0,0, 0.02)"
             >
-                <Button on:click={showNextPage}>NEXT</Button>
+                <Button on:click={showNextPage}><ChevronRightIcon strokeWidth={0.5} /></Button>
             </div>
         </Carousel>
     {/if}
