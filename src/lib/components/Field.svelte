@@ -14,7 +14,7 @@
             required: true
         },
         toggle: {
-            class: "mr-2",
+            class: "mr-2 flex-shrink-0",
             rootProps: { class: "flex flex-row-reverse justify-end items-center" }
         }
     }

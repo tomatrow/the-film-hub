@@ -12,7 +12,7 @@
     const { form } = createForm<Record<string, string>>({
         extend: [reporter()],
         // @ts-ignore
-        // onError: error => error,
+        onError: error => error,
         async onSubmit(values) {
             const formData = new FormData()
             for (const key of Object.keys(values)) formData.append(key, values[key])

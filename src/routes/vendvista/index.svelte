@@ -3,6 +3,7 @@
     import { Footer } from "../../lib/app"
     import { logo } from "../../lib/common/data"
     import { links } from "../../lib/common/stores"
+    import DiscountSection from "../../lib/components/DiscountSection.svelte"
     import {
         Button,
         Form,
@@ -37,24 +38,6 @@
         >Increase your businesses exposure as more and more film makers are coming to our beautiful
         city.</svelte:fragment
     >
-    <Form formId="10363">
-        <Field {...defaults.text} name="full_name">Name</Field>
-        <Field {...defaults.text} name="business_name">Business Name</Field>
-        <Field {...defaults.text} name="business_type">Business Type</Field>
-        <Field {...defaults.text} name="email" type="email">Email</Field>
-        <Field {...defaults.text} name="phone" type="tel">Phone</Field>
-        <Field {...defaults.text} name="address">Address</Field>
-        <div class="flex justify-center mt-auto mx-auto pt-6 w-full" slot="submit">
-            <Button
-                type="submit"
-                class="mx-auto text-black text-center uppercase font-bold text-3xl"
-                blob
-                secondary
-            >
-                Submit
-            </Button>
-        </div>
-    </Form>
 </Hero>
 
 <VideoSection
@@ -98,6 +81,8 @@
     </p>
 </LogoSection>
 
+<DiscountSection />
+
 <Section
     rootProps={{ class: "bg-primary" }}
     class="space-y-4 md:space-y-0 flex flex-col md:flex-row p-6 text-white"
@@ -121,16 +106,15 @@
 </Section>
 
 <Section class="grid gap-4 grid-cols-1 lg:grid-cols-3">
-    <Form>
+    <Form formId="10405">
         <h2 class="text-4xl">Food and Shops</h2>
-        <Field type="file" accept="image/*">Upload Image</Field>
-        <Field {...defaults.text}>Name of Shop</Field>
-        <Field {...defaults.text}>Name of Restaurant/Catering Company</Field>
-        <Field {...defaults.text}>Contact Person</Field>
-        <Field {...defaults.text}>Phone</Field>
-        <Field {...defaults.text}>Email</Field>
-        <Field {...defaults.text}>Address</Field>
-        <Field {...defaults.text}>Link to menu</Field>
+        <Field name="image" type="file" accept="image/*">Upload Image</Field>
+        <Field {...defaults.text} name="company_name" required>Company Name</Field>
+        <Field {...defaults.text} name="contact_person" required>Contact Person</Field>
+        <Field {...defaults.text} name="phone" required>Phone</Field>
+        <Field {...defaults.text} name="email" required>Email</Field>
+        <Field {...defaults.text} name="address" required>Address</Field>
+        <Field {...defaults.text} name="link_to_menu" required>Link to menu</Field>
         <div>
             <h4>Discount Offered</h4>
             <div class="flex flex-col">
@@ -148,18 +132,19 @@
         <Field
             type="checkbox"
             class="mr-2"
+            name="freee_delivery"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
             >Free Delivery</Field
         >
         <Field
             type="checkbox"
             class="mr-2"
+            name="catering"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center pb-4" }}
             >Catering</Field
         >
         <div class="flex justify-center mx-auto pt-6 w-full" slot="submit" style="margin-top:auto">
             <Button
-                disabled
                 type="submit"
                 class="mx-auto text-black text-center uppercase font-bold text-3xl"
                 blob
@@ -170,63 +155,72 @@
         </div>
     </Form>
 
-    <Form>
+    <Form formId="10406">
         <h2 class="text-4xl">Rental Gear</h2>
 
         <Field id="1" type="file" accept="image/*" name="rental_gear_image">Upload Image</Field>
-        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}
-            >Company Name</Field
+        <Field
+            name="company_name"
+            class="border border-gray-400"
+            rootProps={{ class: "flex flex-col" }}>Company Name</Field
         >
-        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }} type="tel"
-            >Phone</Field
+        <Field
+            name="phone"
+            class="border border-gray-400"
+            rootProps={{ class: "flex flex-col" }}
+            type="tel">Phone</Field
         >
-        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}>Website</Field>
+        <Field name="website" class="border border-gray-400" rootProps={{ class: "flex flex-col" }}
+            >Website</Field
+        >
 
         <Field
             type="checkbox"
             class="mr-2"
+            name="camera_gear"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
             >Camera Gear</Field
         >
         <Field
             type="checkbox"
             class="mr-2"
+            name="grip_lighting"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
             >Grip/Lighting</Field
         >
         <Field
             type="checkbox"
             class="mr-2"
+            name="audio_gear"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
             >Audio Gear</Field
         >
         <Field
             type="checkbox"
             class="mr-2"
+            name="set_and_props"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
             >Sets and Props</Field
         >
         <Field
             type="checkbox"
             class="mr-2"
+            name="transportation"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
             >Transportation</Field
         >
         <Field
             type="checkbox"
             class="mr-2"
+            name="other"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}>Other</Field
         >
         <div class="pb-4">
             <h4>Discount Offered</h4>
             <div class="flex flex-col">
                 {#each [10, 15, 20, 25, 30] as value}
-                    <Field
-                        type="radio"
-                        {...defaults.toggle}
-                        bind:group={discounts["c"]}
-                        name="discount"
-                        {value}>{value}%</Field
+                    <Field name="discount_{value}" type="checkbox" {...defaults.toggle} {value}
+                        >{value}%</Field
                     >
                 {/each}
             </div>
@@ -243,22 +237,36 @@
         </div>
     </Form>
 
-    <Form class="h-full">
+    <Form formId="10407" class="h-full">
         <h2 class="text-4xl">Cast and Crew</h2>
         <Field type="file" accept="image/*" name="cast_crew_image">Upload Image</Field>
-        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}>Name</Field>
-        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }} type="tel"
-            >Phone</Field
-        >
-        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}
-            >IMDB Link</Field
+        <Field
+            name="full_name"
+            required
+            class="border border-gray-400"
+            rootProps={{ class: "flex flex-col" }}>Name</Field
         >
         <Field
+            required
+            name="phone"
+            class="border border-gray-400"
+            rootProps={{ class: "flex flex-col" }}
+            type="tel">Phone</Field
+        >
+        <Field
+            name="imdb_or_website"
+            required
+            class="border border-gray-400"
+            rootProps={{ class: "flex flex-col" }}>IMDB Link or Website Link</Field
+        >
+        <Field
+            name="cast"
             type="checkbox"
             class="mr-2"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}>Cast</Field
         >
         <Field
+            name="crew"
             type="checkbox"
             class="mr-2"
             rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}>Crew</Field
@@ -277,13 +285,53 @@
                 {/each}
             </div>
         </div>
-        <Field type="checkbox" {...defaults.toggle}>Executive Producer</Field>
-        <Field type="checkbox" {...defaults.toggle}>Producer</Field>
-        <Field type="checkbox" {...defaults.toggle}>Line Producer</Field>
-        <Field type="checkbox" {...defaults.toggle}>Director</Field>
-        <Field type="checkbox" {...defaults.toggle}>1st Assistant Director</Field>
-        <Field type="checkbox" {...defaults.toggle}>Screenwriter</Field>
-        <Field type="checkbox" {...defaults.toggle}>Script Supervisor</Field>
+
+        <Field name="producer" type="checkbox" {...defaults.toggle}>Producer</Field>
+        <Field name="director" type="checkbox" {...defaults.toggle}>Director</Field>
+        <Field name="screen_writer" type="checkbox" {...defaults.toggle}>Screen Writer</Field>
+        <Field name="production_script_department" type="checkbox" {...defaults.toggle}
+            >Production & Script Department</Field
+        >
+        <Field name="casting_cast" type="checkbox" {...defaults.toggle}>Casting/Cast</Field>
+        <Field name="location-department" type="checkbox" {...defaults.toggle}
+            >Location Department</Field
+        >
+        <Field name="camera_department" type="checkbox" {...defaults.toggle}
+            >Camera Department</Field
+        >
+        <Field name="sound_department" type="checkbox" {...defaults.toggle}>Sound Department</Field>
+        <Field name="grip_electric_department" type="checkbox" {...defaults.toggle}
+            >Grip/Electric Department</Field
+        >
+        <Field name="art_department" type="checkbox" {...defaults.toggle}>Art Department</Field>
+        <Field name="hair_make_up_department" type="checkbox" {...defaults.toggle}
+            >Hair & Make-up Department</Field
+        >
+        <Field name="wardrobe_department" type="checkbox" {...defaults.toggle}
+            >Wardrobe Department</Field
+        >
+        <Field name="post_production" type="checkbox" {...defaults.toggle}>Post Production</Field>
+        <Field name="marketing_and_promotions" type="checkbox" {...defaults.toggle}
+            >Marketing and Promotions</Field
+        >
+        <Field name="legal_accounting_financial" type="checkbox" {...defaults.toggle}
+            >Legal, Accounting, Financial</Field
+        >
+        <Field name="distribution" type="checkbox" {...defaults.toggle}>Distribution</Field>
+        <Field name="on_set_photographer_videographer" type="checkbox" {...defaults.toggle}
+            >On Set Photographer&#8203;/Videographer</Field
+        >
+        <Field name="craft_services" type="checkbox" {...defaults.toggle}>Craft Services</Field>
+        <Field name="live_stream" type="checkbox" {...defaults.toggle}>Live Stream</Field>
+
+        <Field name="other" class="border border-gray-400" rootProps={{ class: "flex flex-col" }}
+            >Other</Field
+        >
+        <Field
+            name="specific_service"
+            class="mb-2 border border-gray-400"
+            rootProps={{ class: "flex flex-col" }}>SPECIFIC SERVICE RENDERED</Field
+        >
 
         <div class="flex justify-center mx-auto pt-6 w-full" slot="submit" style="margin-top:auto">
             <Button

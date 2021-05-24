@@ -17,19 +17,17 @@
     } from "../../lib/components"
     import { defaults } from "../../lib/components/Field.svelte"
     import { locations } from "../../lib/common/data"
-    import { Hotel, Camera, Dining, People, Sun, Tree } from "../../lib/discount-icons"
+
+    import DiscountSection from "../../lib/components/DiscountSection.svelte"
     import { onMount, onDestroy } from "svelte"
 
-    const logos = [
-        { title: "Dining", icon: Dining },
-        { title: "Lodging", icon: Hotel },
-        { title: "Filming Locations", icon: Tree },
-        { title: "Cast & Crew", icon: People },
-        { title: "Equipment", icon: Camera },
-        { title: "And More", icon: Sun }
-    ]
-
-    onMount(() => ($links = [{ href: "/vendvista", title: "Are you a vendor?" }]))
+    onMount(
+        () =>
+            ($links = [
+                { href: "/stages", title: "Stages & Set" },
+                { href: "/vendvista", title: "Are you a vendor?" }
+            ])
+    )
     onDestroy(() => ($links = []))
 </script>
 
@@ -45,7 +43,7 @@
         >Vista, Ca is the perfect, versatile, ﬁlm-friendly backdrop for all ﬁlm projects that need a
         viable and competitive alternative.</svelte:fragment
     >
-    <Form formId="" class="w-full md:w-1/2">
+    <Form formId="10311" class="w-full md:w-1/2">
         <Field required name="confimation_documentation" type="file" accept="image/*">
             Upload Image: Permit number document or Film Hub Stage booking confirmation
         </Field>
@@ -90,23 +88,7 @@
     </p>
 </VideoSection>
 
-<LogoSection bgImage={assets + "/assets/gallery/french-farm-house-1-ext-day.webp"}>
-    <h2 class="text-primary uppercase font-bold text-3xl">
-        Take Advantage of Discounts Exclusively for Film Makers*
-    </h2>
-
-    <div class="text-secondary flex flex-wrap p-8 uppercase">
-        {#each logos as { title, icon }}
-            <div class="space-x-2 flex items-center p-8 w-full sm:w-1/2">
-                <svelte:component this={icon} class="flex-shrink-0 w-24 h-24 text-black" />
-                <h3 class="font-bold text-xl">{title}</h3>
-            </div>
-        {/each}
-    </div>
-    <p class="text-secondary normal-case">
-        *Must have a valid film permit or a stage booked at the Film Hub.
-    </p>
-</LogoSection>
+<DiscountSection />
 
 <TestimonialSection />
 
@@ -140,16 +122,23 @@
             href="https://www.cityofvista.com/business/special-event-permits">click here</Link
         > for permit info or call Chirmere at <Link href="tel:760-643-5206">760-643-5206</Link>.
     </svelte:fragment>
-    <Form formId="10364">
+    <Form formId="10311" class="md:ml-4 md:w-1/2">
+        <Field required name="confimation_documentation" type="file" accept="image/*">
+            Upload Image: Permit number document or Film Hub Stage booking confirmation
+        </Field>
         <Field {...defaults.text} required name="full_name">Name</Field>
-        <Field {...defaults.text} required name="email" type="email">Email</Field>
+        <Field {...defaults.text} required name="company">Company</Field>
         <Field {...defaults.text} required name="phone" type="tel">Phone</Field>
+        <Field {...defaults.text} required name="email" type="email">Email</Field>
+        <Field {...defaults.text} required name="project_name">Project Name</Field>
+        <Field {...defaults.text} required name="filming_dates">Filming Dates</Field>
+
         <Button
             type="submit"
             class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
             slot="submit"
         >
-            Register Your Permit number Here
+            Register Your Permit Number Here
         </Button>
     </Form>
 </FormSection>
