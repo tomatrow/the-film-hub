@@ -2,6 +2,7 @@
     import { onMount } from "svelte"
     import { comments } from "../common/data"
     import Section from "./Section.svelte"
+    import Button from "./Button.svelte"
     import Comment from "./Comment.svelte"
 
     let Carousel

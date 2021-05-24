@@ -1,12 +1,11 @@
-const sveltePreprocess = require("svelte-preprocess")
-const static = require("@sveltejs/adapter-static")
-const pkg = require("./package.json")
-const format = require("./scripts/zen/format.cjs")
+import sveltePreprocess from "svelte-preprocess"
+import adapterStatic from "@sveltejs/adapter-static"
+import format from "./scripts/zen/format.js"
 
 const production = process.env.NODE_ENV === "production"
 
 /** @type {import('@sveltejs/kit').Config} */
-module.exports = {
+export default {
     // Consult https://github.com/sveltejs/svelte-preprocess
     // for more information about preprocessors
     preprocess: [
@@ -22,7 +21,7 @@ module.exports = {
         // By default, `npm run build` will create a standard Node app.
         // You can create optimized builds for different platforms by
         // specifying a different adapter
-        adapter: static(),
+        adapter: adapterStatic(),
 
         // hydrate the <div id="svelte"> element in src/app.html
         target: "#svelte",
@@ -40,9 +39,6 @@ module.exports = {
 
         vite: {
             base: production ? "/wp-content/plugins/thread-and-point/" : "/",
-            ssr: {
-                noExternal: Object.keys(pkg.dependencies || {})
-            },
             plugins: [
                 format({
                     load: true // I think this fixes certain issues

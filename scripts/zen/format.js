@@ -1,15 +1,13 @@
+import fs from "fs"
+import prettier from "prettier"
+import postcss from "postcss"
+import sorting from "postcss-sorting"
+import transform from "rollup-plugin-transform-input"
+import { join } from "path"
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-const fs = require("fs")
-const prettier = require("prettier")
-const postcss = require("postcss")
-const sorting = require("postcss-sorting")
-const transform = require("rollup-plugin-transform-input")
-const { join } = require("path")
-
-
-
-
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function formatContents(filepath, source) {
     return prettier.format(source, {
@@ -53,7 +51,7 @@ function formatCss(filepath, source, zen, zenTailwind) {
 }
 
 
-module.exports = function (options) {
+export default function (options) {
 
     const zen = fs.readFileSync(join(__dirname, "zen"), "utf8").split("\n")
     const zenTailwind = fs.readFileSync(join(__dirname, "zen-tailwind"), "utf8")

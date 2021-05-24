@@ -24,36 +24,31 @@ export const logos = [
 export let comments = [
     {
         src: "/assets/headshots/shaun-f.webp",
-        body:
-            "I feel like the creative community can be very isolating, that’s why its so beautiful having a space where the vision is community, the vision is inspiration, the vision is to collaborate. Therefore I want to bring in as many people as I can to have the opportunity to cultivate and create something that hasn’t been made before.",
+        body: "I feel like the creative community can be very isolating, that’s why its so beautiful having a space where the vision is community, the vision is inspiration, the vision is to collaborate. Therefore I want to bring in as many people as I can to have the opportunity to cultivate and create something that hasn’t been made before.",
         author: "Shaun Frederickson",
         title: "Firm Grip Photography"
     },
     {
         src: "/assets/headshots/jon-s.webp",
-        body:
-            "I spent the last year working at my home office, and to be honest, it got a little lonely. Working here has been great because it’s such a great community. Im always running into people that do things similar to what I do but not exactly what I do and that overlap is really nice. So getting to rub shoulders with people that are doing creative work is really inspiring.",
+        body: "I spent the last year working at my home office, and to be honest, it got a little lonely. Working here has been great because it’s such a great community. Im always running into people that do things similar to what I do but not exactly what I do and that overlap is really nice. So getting to rub shoulders with people that are doing creative work is really inspiring.",
         author: "Jon Steingard",
         title: "Steingard Creative, Inc"
     },
     {
         src: "/assets/headshots/joe-l2.webp",
-        body:
-            "My home town of Vista here now has this amazing place where like them in many ways community is created. At the Nammshow its about bringing people together to collaborate to work together from all different cultures around the world and I think what we have now here in Vista with The Film Hub is the same thing, bringing creators together, bringing people together to collaborate and work together to create wonderful outcomes like we just did with our NAMM Board meeting in the studio today.",
+        body: "My home town of Vista here now has this amazing place where like them in many ways community is created. At the Nammshow its about bringing people together to collaborate to work together from all different cultures around the world and I think what we have now here in Vista with The Film Hub is the same thing, bringing creators together, bringing people together to collaborate and work together to create wonderful outcomes like we just did with our NAMM Board meeting in the studio today.",
         author: "Joe Lamond",
         title: "NAMM Show CEO"
     },
     {
         src: "/assets/headshots/aulio-i.webp",
-        body:
-            "But for me what I love the most about this place is how welcome I felt as soon as I walked through the door. The owners, the staff, all want you to feel welcome and part of the family. I know that is kind of cliche, but the feeling is awesome.",
+        body: "But for me what I love the most about this place is how welcome I felt as soon as I walked through the door. The owners, the staff, all want you to feel welcome and part of the family. I know that is kind of cliche, but the feeling is awesome.",
         author: "Aulio Ivan",
         title: "Film Producer"
     },
     {
         src: "/assets/headshots/celia-a.webp",
-        body:
-            "Having an office and creating content from the Film Hub has increased the quality of my work. I have been able to use professional stages and equipment for photography and video work. It’s been incredible to have other creatives professionals to collaborate with and there is so much talent under one roof. The management is so supportive of every request I have had, making it easy to focus on what I am best at, being creative.",
+        body: "Having an office and creating content from the Film Hub has increased the quality of my work. I have been able to use professional stages and equipment for photography and video work. It’s been incredible to have other creatives professionals to collaborate with and there is so much talent under one roof. The management is so supportive of every request I have had, making it easy to focus on what I am best at, being creative.",
         author: "Celia Young",
         title: "Designed Images Owner"
     }
