@@ -7,6 +7,10 @@ devDependencies:
   autoprefixer: 10.2.5_postcss@8.2.12
   cssnano: 5.0.1_postcss@8.2.12
   felte: 0.6.8_svelte@3.37.0
+  filepond: 4.27.0
+  filepond-plugin-file-validate-type: 1.2.6_filepond@4.27.0
+  filepond-plugin-image-exif-orientation: 1.0.11_filepond@4.27.0
+  filepond-plugin-image-preview: 4.6.6_filepond@4.27.0
   lodash: 4.17.21
   luminous-lightbox: 2.3.3
   luminous-svelte: link:../../../luminous-svelte
@@ -22,6 +26,7 @@ devDependencies:
   svelte: 3.37.0
   svelte-actions: 0.1.0
   svelte-carousel: 1.0.3
+  svelte-filepond: 0.0.1_filepond@4.27.0
   svelte-portal: 2.1.2
   svelte-preprocess: 4.7.2_697dfa39bbb1c443ab6abb89b3f9b036
   tailwindcss: 2.1.2_d887a42ede92218908fd5c3cc0b71177
@@ -721,6 +726,34 @@ packages:
       svelte: ^3.31.0
     resolution:
       integrity: sha512-c9FD9AvGJKncdxcIqGS3+RMRt2alfhp+SqXB/Bt9r6Zb9LuilPlsxz29niUGb+MPdfxxGuowW+rymxwSjbUuwg==
+  /filepond-plugin-file-validate-type/1.2.6_filepond@4.27.0:
+    dependencies:
+      filepond: 4.27.0
+    dev: true
+    peerDependencies:
+      filepond: '>=1.x <5.x'
+    resolution:
+      integrity: sha512-3JFxpb4o5D4BssP/Drjn2GPpejg/QXzU4e3/Pq8IvIJuokHz95b6+RPYstQ+6ITKREYup0N8F/CO/OQfhVkUgg==
+  /filepond-plugin-image-exif-orientation/1.0.11_filepond@4.27.0:
+    dependencies:
+      filepond: 4.27.0
+    dev: true
+    peerDependencies:
+      filepond: '>=3.x <5.x'
+    resolution:
+      integrity: sha512-hLBc12Fk6Zkj3L8mSAn+elugHOqT5rLUbgVXQQIQjMe0FsGjtpoxqeVR6jt4IWHGat2L9sFAgU2TGmd1mqosCg==
+  /filepond-plugin-image-preview/4.6.6_filepond@4.27.0:
+    dependencies:
+      filepond: 4.27.0
+    dev: true
+    peerDependencies:
+      filepond: '>=4.x <5.x'
+    resolution:
+      integrity: sha512-zWbbpjNdvaVJ8tVsI2AYtjzVPMIqdsMhcSs3XlBKQXBMPmofGm3Xm2MT2QrZjhxBss03HeAp9Uf4Xab8lDgTlw==
+  /filepond/4.27.0:
+    dev: true
+    resolution:
+      integrity: sha512-Z1XUXny6BQw9RVORz/MMjyVJHcW+tXiMRxocLEAY6gY1EfpMPwLJcQhalpMnfiGax7sBqXkv3tE8sZO71Q7Hbw==
   /fill-range/7.0.1:
     dependencies:
       to-regex-range: 5.0.1
@@ -1792,6 +1825,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-s/H7+JPx5CfU2WT8Nk+ETTqgOScG9pgJarzdX4HOQxkUDtlhb6Ss5qDpKbOZ2yh+pQFncjD1v4kp8qQ6S8j4lg==
+  /svelte-filepond/0.0.1_filepond@4.27.0:
+    dependencies:
+      filepond: 4.27.0
+    dev: true
+    peerDependencies:
+      filepond: '>=3.7.x <5.x'
+    resolution:
+      integrity: sha512-R5z/Gj/2VSdV70GxvW226ww4zrVyV2EFTXrsWIdn7sEB7uYWIJvvciUNQVTfYZfcAgGsa4gprGsuqWNG3auSKw==
   /svelte-hmr/0.14.0_svelte@3.37.0:
     dependencies:
       svelte: 3.37.0
@@ -2020,6 +2061,10 @@ specifiers:
   autoprefixer: ^10.2.5
   cssnano: ^5.0.0
   felte: ^0.6.7
+  filepond: ^4.27.0
+  filepond-plugin-file-validate-type: ^1.2.6
+  filepond-plugin-image-exif-orientation: ^1.0.11
+  filepond-plugin-image-preview: ^4.6.6
   lodash: ^4.17.21
   luminous-lightbox: ^2.3.3
   luminous-svelte: link:/Users/ajcaldwell/src/luminous-svelte
@@ -2035,6 +2080,7 @@ specifiers:
   svelte: ^3.29.0
   svelte-actions: ^0.1.0
   svelte-carousel: ^1.0.3
+  svelte-filepond: ^0.0.1
   svelte-portal: ^2.1.2
   svelte-preprocess: ^4.7.0
   tailwindcss: ^2.1.1

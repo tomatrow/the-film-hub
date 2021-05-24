@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Form from "./_Form.svelte"
     import Gallery from "./_Gallery.svelte"
     import { Footer } from "../../lib/app"
     import { links } from "../../lib/common/stores"
@@ -10,10 +9,14 @@
         LogoSection,
         VideoSection,
         FormSection,
-        Comment,
-        Hero
+        Hero,
+        Form,
+        Button,
+        Field,
+        TestimonialSection
     } from "../../lib/components"
-    import { comments, locations } from "../../lib/common/data"
+    import { defaults } from "../../lib/components/Field.svelte"
+    import { locations } from "../../lib/common/data"
     import { Hotel, Camera, Dining, People, Sun, Tree } from "../../lib/discount-icons"
     import { onMount, onDestroy } from "svelte"
 
@@ -35,14 +38,30 @@
 </svelte:head>
 
 <Hero>
-    <svelte:fragment slot="title">
-        Get started filming with our free guide to film friendly city vista, ca
-    </svelte:fragment>
+    <svelte:fragment slot="title">Register to get Film Friendly Badge</svelte:fragment>
     <svelte:fragment slot="blurb"
         >The perfect, versatile, ﬁlm-friendly backdrop for all ﬁlm projects that need a viable and
         competitive alternative.</svelte:fragment
     >
-    <Form />
+    <Form formId="" class="w-full md:w-1/2">
+        <Field required name="confimation_documentation" type="file" accept="image/*">
+            Upload Image: Permit number and document or Film Hub Stage booking confirmation
+        </Field>
+        <Field {...defaults.text} required name="full_name">Name</Field>
+        <Field {...defaults.text} required name="company">Company</Field>
+        <Field {...defaults.text} required name="phone" type="tel">Phone</Field>
+        <Field {...defaults.text} required name="email" type="email">Email</Field>
+        <Field {...defaults.text} required name="project_name">Project Name</Field>
+        <Field {...defaults.text} required name="filming_dates">Filming Dates</Field>
+
+        <Button
+            type="submit"
+            class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
+            slot="submit"
+        >
+            Register Your Permit Reservations Here
+        </Button>
+    </Form>
 </Hero>
 
 <VideoSection>
@@ -85,13 +104,7 @@
     </p>
 </LogoSection>
 
-<Section
-    rootProps={{ class: "bg-primary py-4" }}
-    class="space-y-4 md:space-y-0 flex items-center flex-col md:flex-row justify-around"
->
-    <Comment {...comments[0]} />
-    <Link blob light href="#form" class="uppercase font-bold text-2xl">Register Now</Link>
-</Section>
+<TestimonialSection />
 
 <Section class="space-y-4">
     <h2 class="text-primary text-center uppercase font-bold text-3xl">
@@ -124,7 +137,18 @@
             href="https://www.cityofvista.com/business/special-event-permits">click here</Link
         > for permit info or call Chirmere at <Link href="tel:760-643-5206">760-643-5206</Link>.
     </svelte:fragment>
-    <Form id="form" />
+    <Form formId="10364">
+        <Field {...defaults.text} required name="full_name">Name</Field>
+        <Field {...defaults.text} required name="email" type="email">Email</Field>
+        <Field {...defaults.text} required name="phone" type="tel">Phone</Field>
+        <Button
+            type="submit"
+            class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
+            slot="submit"
+        >
+            Register Your Permit Reservations Here
+        </Button>
+    </Form>
 </FormSection>
 
 <Footer>

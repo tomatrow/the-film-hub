@@ -1,26 +1,28 @@
 <script lang="ts">
     import { assets } from "$app/paths"
-    import Form from "./_Form.svelte"
     import { Footer } from "../../lib/app"
+    import { logo } from "../../lib/common/data"
     import { links } from "../../lib/common/stores"
     import {
-        Comment,
+        Button,
+        Form,
         Hero,
         Link,
+        Field,
         Section,
         LogoSection,
         VideoSection,
-        FormSection
+        TestimonialSection
     } from "../../lib/components"
-    import { comments, locations, backgrounds } from "../../lib/common/data"
+    import { defaults } from "../../lib/components/Field.svelte"
     import { onMount, onDestroy } from "svelte"
 
-    let Carousel
     onMount(async () => {
         $links = [{ href: "/filmvista", title: "Are you a filmer?" }]
-        Carousel = (await import("svelte-carousel/src/components/Carousel/Carousel.svelte")).default
     })
     onDestroy(() => ($links = []))
+
+    let discounts = {}
 </script>
 
 <svelte:head>
@@ -35,7 +37,24 @@
         >Increase your businesses exposure as more and more film makers are coming to our beautiful
         city.</svelte:fragment
     >
-    <Form />
+    <Form formId="10363">
+        <Field {...defaults.text} name="full_name">Name</Field>
+        <Field {...defaults.text} name="business_name">Business Name</Field>
+        <Field {...defaults.text} name="business_type">Business Type</Field>
+        <Field {...defaults.text} name="email" type="email">Email</Field>
+        <Field {...defaults.text} name="phone" type="tel">Phone</Field>
+        <Field {...defaults.text} name="address">Address</Field>
+        <div class="flex justify-center mt-auto mx-auto pt-6 w-full" slot="submit">
+            <Button
+                type="submit"
+                class="mx-auto text-black text-center uppercase font-bold text-3xl"
+                blob
+                secondary
+            >
+                Learn More
+            </Button>
+        </div>
+    </Form>
 </Hero>
 
 <VideoSection
@@ -60,20 +79,7 @@
     </p>
 </LogoSection>
 
-<Section rootProps={{ class: "bg-light" }} class="space-y-4 pt-32 pb-20">
-    <h2 class="text-center uppercase font-bold text-3xl">
-        What Film Makers Are Saying About Vista
-    </h2>
-    {#if Carousel}
-        <Carousel>
-            {#each comments as comment}
-                <div class="flex justify-center">
-                    <Comment {...comment} />
-                </div>
-            {/each}
-        </Carousel>
-    {/if}
-</Section>
+<TestimonialSection />
 
 <LogoSection
     rootProps={{ class: "md:flex-row-reverse" }}
@@ -94,15 +100,205 @@
     <Link secondary blob class="uppercase" href="/">Learn More</Link>
 </LogoSection>
 
-<FormSection>
-    <svelte:fragment slot="title">Become a featured vendor for free!</svelte:fragment>
-    <svelte:fragment slot="blurb"
-        >Think your location in Vista, Ca is perfect for someones upcoming film project? Want to
-        help the exposure of your business by offering incoming film makers a discount? Contact Us
-        Today and join the “Film Friendly City” program as a featured vendor.</svelte:fragment
-    >
-    <Form />
-</FormSection>
+<Section
+    rootProps={{ class: "bg-primary" }}
+    class="space-y-4 md:space-y-0 flex flex-col md:flex-row p-6 text-white"
+>
+    <div class="space-y-2 flex flex-col justify-around">
+        <div class="space-y-2 sm:space-y-0 sm:space-x-2 flex flex-col sm:flex-row">
+            <div
+                class="h-44 flex-shrink-0 w-full sm:w-5/12 sm:h-auto bg-center sm:bg-right bg-contain bg-no-repeat"
+                style="background-image: url({logo})"
+            />
+            <h2 class="py-12 pr-4 uppercase font-bold text-5xl md:text-4xl">
+                Become a featured vendor for free!
+            </h2>
+        </div>
+        <p class="text-2xl">
+            Think your location in Vista, Ca is perfect for someones upcoming film project? Want to
+            help the exposure of your business by offering incoming film makers a discount? Contact
+            Us Today and join the “Film Friendly City” program as a featured vendor.
+        </p>
+    </div>
+</Section>
+
+<Section class="grid gap-4 grid-cols-1 lg:grid-cols-3">
+    <Form>
+        <h2 class="text-4xl">Food and Shops</h2>
+        <Field type="file" accept="image/*">Upload Image</Field>
+        <Field {...defaults.text}>Name of Shop</Field>
+        <Field {...defaults.text}>Name of Restaurant/Catering Company</Field>
+        <Field {...defaults.text}>Contact Person</Field>
+        <Field {...defaults.text}>Phone</Field>
+        <Field {...defaults.text}>Email</Field>
+        <Field {...defaults.text}>Address</Field>
+        <Field {...defaults.text}>Link to menu</Field>
+        <div>
+            <h4>Discount Offered</h4>
+            <div class="flex flex-col">
+                {#each [10, 15, 20, 25, 30] as value}
+                    <Field
+                        {...defaults.toggle}
+                        type="radio"
+                        bind:group={discounts["a"]}
+                        name="discount"
+                        {value}>{value}%</Field
+                    >
+                {/each}
+            </div>
+        </div>
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
+            >Free Delivery</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center pb-4" }}
+            >Catering</Field
+        >
+        <div class="flex justify-center mx-auto pt-6 w-full" slot="submit" style="margin-top:auto">
+            <Button
+                disabled
+                type="submit"
+                class="mx-auto text-black text-center uppercase font-bold text-3xl"
+                blob
+                secondary
+            >
+                Submit
+            </Button>
+        </div>
+    </Form>
+
+    <Form>
+        <h2 class="text-4xl">Rental Gear</h2>
+
+        <Field id="1" type="file" accept="image/*" name="rental_gear_image">Upload Image</Field>
+        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}
+            >Company Name</Field
+        >
+        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }} type="tel"
+            >Phone</Field
+        >
+        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}>Website</Field>
+
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
+            >Camera Gear</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
+            >Grip/Lighting</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
+            >Audio Gear</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
+            >Sets and Props</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}
+            >Transportation</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}>Other</Field
+        >
+        <div class="pb-4">
+            <h4>Discount Offered</h4>
+            <div class="flex flex-col">
+                {#each [10, 15, 20, 25, 30] as value}
+                    <Field
+                        type="radio"
+                        {...defaults.toggle}
+                        bind:group={discounts["c"]}
+                        name="discount"
+                        {value}>{value}%</Field
+                    >
+                {/each}
+            </div>
+        </div>
+        <div class="flex justify-center mx-auto pt-6 w-full" slot="submit" style="margin-top:auto">
+            <Button
+                type="submit"
+                class="mx-auto text-black text-center uppercase font-bold text-3xl"
+                blob
+                secondary
+            >
+                Submit
+            </Button>
+        </div>
+    </Form>
+
+    <Form class="h-full">
+        <h2 class="text-4xl">Cast and Crew</h2>
+        <Field type="file" accept="image/*" name="cast_crew_image">Upload Image</Field>
+        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}>Name</Field>
+        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }} type="tel"
+            >Phone</Field
+        >
+        <Field class="border border-gray-400" rootProps={{ class: "flex flex-col" }}
+            >IMDB Link</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}>Cast</Field
+        >
+        <Field
+            type="checkbox"
+            class="mr-2"
+            rootProps={{ class: "flex flex-row-reverse justify-end items-center" }}>Crew</Field
+        >
+        <div>
+            <h4>Discount Offered</h4>
+            <div class="flex flex-col">
+                {#each [10, 15, 20, 25, 30] as value}
+                    <Field
+                        {...defaults.toggle}
+                        bind:group={discounts["b"]}
+                        name="discount"
+                        type="radio"
+                        {value}>{value}%</Field
+                    >
+                {/each}
+            </div>
+        </div>
+        <Field type="checkbox" {...defaults.toggle}>Executive Producer</Field>
+        <Field type="checkbox" {...defaults.toggle}>Producer</Field>
+        <Field type="checkbox" {...defaults.toggle}>Line Producer</Field>
+        <Field type="checkbox" {...defaults.toggle}>Director</Field>
+        <Field type="checkbox" {...defaults.toggle}>1st Assistant Director</Field>
+        <Field type="checkbox" {...defaults.toggle}>Screenwriter</Field>
+        <Field type="checkbox" {...defaults.toggle}>Script Supervisor</Field>
+
+        <div class="flex justify-center mx-auto pt-6 w-full" slot="submit" style="margin-top:auto">
+            <Button
+                type="submit"
+                class="mx-auto text-black text-center uppercase font-bold text-3xl"
+                blob
+                secondary
+            >
+                Submit
+            </Button>
+        </div>
+    </Form>
+</Section>
 
 <Footer>
     <span>Interested in filming in Vista, CA?</span>

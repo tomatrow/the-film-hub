@@ -1,11 +1,13 @@
 <script>
     import ContactForm7 from "./ContactForm7.svelte"
+    export { clazz as class }
+    let clazz = ""
 </script>
 
 <ContactForm7
     origin={import.meta.env.VITE_CF7_ORIGIN}
     {...$$restProps}
-    class="text-primary divide-y divide-black space-y-12 flex flex-col flex-shrink-0 p-4 py-6 h-full md:w-1/3 bg-white uppercase"
+    class="{clazz} text-primary divide-y divide-black space-y-12 flex flex-col flex-shrink-0 p-4 py-6 h-full bg-white uppercase"
 >
     <div class="space-y-4 flex flex-col font-bold text-2xl">
         <slot />
