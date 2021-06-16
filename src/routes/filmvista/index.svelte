@@ -24,7 +24,7 @@
     onMount(
         () =>
             ($links = [
-                { href: "/stages", title: "Stages & Set" },
+                { href: "/stages", title: "Stages & Set", rel: "external" },
                 { href: "/vendvista", title: "Are you a vendor?" }
             ])
     )

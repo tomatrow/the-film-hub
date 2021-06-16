@@ -16,7 +16,7 @@
         class="max-w-screen-lg sm:space-x-4 transition-all duration-100 flex items-center flex-col sm:flex-row mx-auto"
         class:py-8={expand}
     >
-        <Link href="/" class="mr-auto w-full"
+        <Link href="/" rel="external" class="mr-auto w-full"
             ><img
                 class="h-14 w-auto sm:p-4 pt-2 sm:h-20 object-contain"
                 src={filmHubLogo.color}
@@ -24,12 +24,16 @@
             /></Link
         >
         <div class="space-x-2 flex items-center flex-shrink-0 ml-auto pb-2">
-            {#each $links as { title, href }}
-                <Link class="text-center uppercase font-bold text-xs" {href}>{title}</Link>
+            {#each $links as { title, href, rel }}
+                <Link class="text-center uppercase font-bold text-xs" {rel} {href}>{title}</Link>
             {/each}
 
-            <Link primary blob class="text-center uppercase text-xs" href="/book-a-tour/"
-                >Book A Tour</Link
+            <Link
+                rel="external"
+                primary
+                blob
+                class="text-center uppercase text-xs"
+                href="/book-a-tour/">Book A Tour</Link
             >
         </div>
     </nav>
