@@ -19,16 +19,11 @@
     import { locations } from "../../lib/common/data"
 
     import DiscountSection from "../../lib/components/DiscountSection.svelte"
-    import { onMount, onDestroy } from "svelte"
 
-    onMount(
-        () =>
-            ($links = [
-                { href: "/stages", title: "Stages & Set", rel: "external" },
-                { href: "/vendvista", title: "Are you a vendor?" }
-            ])
-    )
-    onDestroy(() => ($links = []))
+    $links = [
+        { href: "/stages", title: "Stages & Set", rel: "external" },
+        { href: "/vendvista", title: "Are you a vendor?" }
+    ]
 </script>
 
 <svelte:head>
@@ -40,12 +35,17 @@
         >Register to get your Film Friendly Badge for Discounts</svelte:fragment
     >
     <svelte:fragment slot="blurb"
-        >Vista, Ca is the perfect, versatile, ﬁlm-friendly backdrop for all ﬁlm projects that need a
-        viable and competitive alternative.</svelte:fragment
+        >Vista, Ca is the perfect, versatile, film-friendly backdrop for all film projects that need
+        a viable and competitive alternative.</svelte:fragment
     >
     <Form formId="10311" class="w-full md:w-1/2">
-        <Field required name="confimation_documentation" type="file" accept="image/*">
-            Upload Image: Permit number document or Film Hub Stage booking confirmation
+        <Field
+            required
+            name="confimation_documentation"
+            type="file"
+            accept="image/*,.doc,.docx,.pdf"
+        >
+            Upload Image: Permit number document
         </Field>
         <Field {...defaults.text} required name="full_name">Name</Field>
         <Field {...defaults.text} required name="company">Company</Field>
@@ -123,8 +123,13 @@
         > for permit info or call Chirmere at <Link href="tel:760-643-5206">760-643-5206</Link>.
     </svelte:fragment>
     <Form formId="10311" class="md:ml-4 md:w-1/2">
-        <Field required name="confimation_documentation" type="file" accept="image/*">
-            Upload Image: Permit number document or Film Hub Stage booking confirmation
+        <Field
+            required
+            name="confimation_documentation"
+            type="file"
+            accept="image/*,.doc,.docx,.pdf"
+        >
+            Upload Image: Permit number document
         </Field>
         <Field {...defaults.text} required name="full_name">Name</Field>
         <Field {...defaults.text} required name="company">Company</Field>

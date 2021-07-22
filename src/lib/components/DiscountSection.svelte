@@ -13,7 +13,7 @@
 
 <LogoSection>
     <h2 class="text-primary uppercase font-bold text-3xl">
-        Take Advantage of Discounts Exclusively for Film Makers*
+        Discounts Exclusively for Film Makers*
     </h2>
 
     <div class="text-secondary flex flex-wrap p-8 uppercase">

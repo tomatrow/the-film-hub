@@ -16,13 +16,8 @@
         TestimonialSection
     } from "../../lib/components"
     import { defaults } from "../../lib/components/Field.svelte"
-    import { onMount, onDestroy } from "svelte"
 
-    onMount(async () => {
-        $links = [{ href: "/filmvista", title: "Are you a film maker?" }]
-    })
-    onDestroy(() => ($links = []))
-
+    $links = [{ href: "/filmvista", title: "Are you a film maker?" }]
     let discounts = {}
 </script>
 
@@ -48,10 +43,7 @@
     </h2></VideoSection
 >
 
-<LogoSection
-    class="flex flex-col justify-center"
-    bgImage={assets + "/assets/gallery/french-farm-house-1-ext-day.webp"}
->
+<LogoSection class="flex flex-col justify-center">
     <h2 class="text-primary uppercase font-bold text-3xl">About the Film Friendly City</h2>
     <p class="text-secondary text-2xl">
         “Film Friendly City” is a program to provide those incentives. The program will offer TV and
@@ -108,7 +100,7 @@
 <Section class="grid gap-4 grid-cols-1 lg:grid-cols-3">
     <Form formId="10405">
         <h2 class="text-4xl">Food and Shops</h2>
-        <Field name="image" type="file" accept="image/*">Upload Image</Field>
+        <Field name="image" type="file" accept="image/*,.doc,.docx,.pdf">Upload Image</Field>
         <Field {...defaults.text} name="company_name" required>Company Name</Field>
         <Field {...defaults.text} name="contact_person" required>Contact Person</Field>
         <Field {...defaults.text} name="phone" required>Phone</Field>
@@ -158,7 +150,9 @@
     <Form formId="10406">
         <h2 class="text-4xl">Rental Gear</h2>
 
-        <Field id="1" type="file" accept="image/*" name="rental_gear_image">Upload Image</Field>
+        <Field id="1" type="file" accept="image/*,.doc,.docx,.pdf" name="rental_gear_image"
+            >Upload Image</Field
+        >
         <Field
             name="company_name"
             class="border border-gray-400"
@@ -239,7 +233,9 @@
 
     <Form formId="10407" class="h-full">
         <h2 class="text-4xl">Cast and Crew</h2>
-        <Field type="file" accept="image/*" name="cast_crew_image">Upload Image</Field>
+        <Field type="file" accept="image/*,.doc,.docx,.pdf" name="cast_crew_image"
+            >Upload Image</Field
+        >
         <Field
             name="full_name"
             required
