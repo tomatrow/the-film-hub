@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { gallery as luminous } from "luminous-svelte"
+    import { gallery as luminous } from "$lib/luminous-svelte"
     import "luminous-lightbox/dist/luminous-basic.css"
     import { Button } from "../../lib/components"
     import { gallery } from "../../lib/common/data"

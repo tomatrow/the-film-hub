@@ -1,4 +1,4 @@
-import type { LuminousGallery, GalleryActionConfig } from "luminous-svelte"
+import type { LuminousGallery, GalleryActionConfig } from "$lib/luminous-svelte"
 import "luminous-lightbox/dist/luminous-basic.css"
 import "./lightbox.scss"
 

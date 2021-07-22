@@ -1,9 +1,9 @@
 <script lang="ts">
     import { assets } from "$app/paths"
-    import { Footer } from "../../lib/app"
-    import { logo } from "../../lib/common/data"
-    import { links } from "../../lib/common/stores"
-    import DiscountSection from "../../lib/components/DiscountSection.svelte"
+    import { Footer } from "$lib/app"
+    import { logo } from "$lib/common/data"
+    import { links } from "$lib/common/stores"
+    import DiscountSection from "$lib/components/DiscountSection.svelte"
     import {
         Button,
         Form,
@@ -14,8 +14,8 @@
         LogoSection,
         VideoSection,
         TestimonialSection
-    } from "../../lib/components"
-    import { defaults } from "../../lib/components/Field.svelte"
+    } from "$lib/components"
+    import { defaults } from "$lib/components/Field.svelte"
 
     $links = [{ href: "/filmvista", title: "Are you a film maker?" }]
     let discounts = {}
