@@ -29,7 +29,10 @@ export default {
         // ssr: false,
 
         paths: {
-            assets: production ? "/wp-content/plugins/thread-and-point/" : ""
+            assets: production
+                ? "https://thefilmhubinc.com/wp-content/plugins/thread-and-point/the-film-hub/build"
+                : "",
+            base: production ? "/wp-content/plugins/thread-and-point/the-film-hub/build" : "/"
         },
 
         prerender: {
@@ -38,11 +41,11 @@ export default {
         },
 
         vite: {
-            base: production ? "/wp-content/plugins/thread-and-point/" : "/",
             plugins: [
-                format({
-                    load: true // I think this fixes certain issues
-                })
+                !production &&
+                    format({
+                        load: true // I think this fixes certain issues
+                    })
             ]
         }
     }
