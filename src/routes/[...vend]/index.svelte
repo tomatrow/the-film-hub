@@ -1,11 +1,37 @@
+<script lang="ts" context="module">
+    import { graphql } from "$lib/scripts/apollo"
+    import { loadPage } from "$lib/scripts/router"
+    import { PageFragment } from "$lib/queries/pages"
+
+    export const load = loadPage(
+        "Vend",
+        graphql`
+            query VendPageQuery($id: ID!, $isPreview: Boolean!) {
+                page(id: $id, asPreview: $isPreview) {
+                    ...PageFragment
+                    template {
+                        ... on Template_Vend {
+                            vendPageFields {
+                                test
+                            }
+                        }
+                    }
+                }
+            }
+            ${PageFragment}
+        `
+    )
+</script>
+
 <script lang="ts">
     import { assets } from "$app/paths"
     import { Footer } from "$lib/app"
     import { logo } from "$lib/common/data"
     import { links } from "$lib/common/stores"
-    import DiscountSection from "$lib/components/DiscountSection.svelte"
+    import { defaults } from "$lib/components/Field.svelte"
     import {
         Button,
+        DiscountSection,
         Form,
         Hero,
         Link,
@@ -13,17 +39,20 @@
         Section,
         LogoSection,
         VideoSection,
-        TestimonialSection
+        TestimonialSection,
+        Meta
     } from "$lib/components"
-    import { defaults } from "$lib/components/Field.svelte"
+    import { session } from "$app/stores"
+
+    console.log({ session: $session })
+
+    export let page: any
 
     $links = [{ href: "/filmvista", title: "Are you a film maker?" }]
     let discounts = {}
 </script>
 
-<svelte:head>
-    <title>Film Friendly Vista Vendor</title>
-</svelte:head>
+<!-- <Meta title={page.title} /> -->
 
 <Hero>
     <svelte:fragment slot="title">

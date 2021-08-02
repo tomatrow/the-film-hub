@@ -1,4 +1,4 @@
-import sveltePreprocess from "svelte-preprocess"
+import preprocess from "svelte-preprocess"
 import adapterStatic from "@sveltejs/adapter-static"
 import format from "./scripts/zen/format.js"
 
@@ -8,14 +8,12 @@ const production = process.env.NODE_ENV === "production"
 export default {
     // Consult https://github.com/sveltejs/svelte-preprocess
     // for more information about preprocessors
-    preprocess: [
-        sveltePreprocess({
-            defaults: {
-                style: "postcss"
-            },
-            postcss: true
-        })
-    ],
+    preprocess: preprocess({
+        defaults: {
+            style: "postcss"
+        },
+        postcss: true
+    }),
 
     kit: {
         // By default, `npm run build` will create a standard Node app.
@@ -28,12 +26,12 @@ export default {
 
         // ssr: false,
 
-        paths: {
-            assets: production
-                ? "https://thefilmhubinc.com/wp-content/plugins/thread-and-point/the-film-hub/build"
-                : "",
-            base: production ? "/wp-content/plugins/thread-and-point/the-film-hub/build" : "/"
-        },
+        // paths: {
+        //     base: production ? "/wp-content/plugins/thread-and-point/the-film-hub/build" : "",
+        //     assets: production
+        //         ? "https://thefilmhubinc.com/wp-content/plugins/thread-and-point/the-film-hub/build"
+        //         : ""
+        // },
 
         prerender: {
             crawl: false,

@@ -1,8 +1,36 @@
+<script lang="ts" context="module">
+    import { graphql } from "$lib/scripts/apollo"
+    import { loadPage } from "$lib/scripts/router"
+    import { PageFragment } from "$lib/queries/pages"
+
+    export const load = loadPage(
+        "Film",
+        graphql`
+            query FilmPageQuery($id: ID!, $isPreview: Boolean!) {
+                page(id: $id, asPreview: $isPreview) {
+                    ...PageFragment
+                    template {
+                        ... on Template_Film {
+                            filmPageFields {
+                                test
+                            }
+                        }
+                    }
+                }
+            }
+            ${PageFragment}
+        `
+    )
+</script>
+
 <script lang="ts">
     import Gallery from "./_Gallery.svelte"
-    import { Footer } from "../../lib/app"
-    import { links } from "../../lib/common/stores"
+    import { Footer } from "$lib/app"
+    import { links } from "$lib/common/stores"
     import { assets } from "$app/paths"
+    import { defaults } from "$lib/components/Field.svelte"
+    import { locations } from "$lib/common/data"
+    import DiscountSection from "$lib/components/DiscountSection.svelte"
     import {
         Link,
         Section,
@@ -13,12 +41,11 @@
         Form,
         Button,
         Field,
-        TestimonialSection
+        TestimonialSection,
+        Meta
     } from "../../lib/components"
-    import { defaults } from "../../lib/components/Field.svelte"
-    import { locations } from "../../lib/common/data"
 
-    import DiscountSection from "../../lib/components/DiscountSection.svelte"
+    export let page: any
 
     $links = [
         { href: "/stages", title: "Stages & Set", rel: "external" },
@@ -26,9 +53,7 @@
     ]
 </script>
 
-<svelte:head>
-    <title>Film Friendly Vista</title>
-</svelte:head>
+<Meta title={page.title} />
 
 <Hero>
     <svelte:fragment slot="title"

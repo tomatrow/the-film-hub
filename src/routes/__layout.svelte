@@ -3,8 +3,11 @@
     import "tippy.js/dist/tippy.css"
     import "../app.postcss"
     import { Nav } from "$lib/app"
+    import { session } from "$app/stores"
 
     let expand: boolean
+
+    console.log({ session: $session })
 </script>
 
 <Nav bind:expand />
