@@ -13,6 +13,7 @@ export const MediaItemFragment = graphql`
         id
         alt: altText
         src: sourceUrl(size: LARGE)
+        srcset: srcSet
     }
 `
 

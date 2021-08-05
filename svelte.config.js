@@ -25,6 +25,8 @@ export default {
         target: "#svelte",
 
         // ssr: false,
+        router: false,
+        
 
         // paths: {
         //     base: production ? "/wp-content/plugins/thread-and-point/the-film-hub/build" : "",
@@ -37,7 +39,7 @@ export default {
             crawl: false,
             pages: ["/filmvista", "/vendvista"]
         },
-
+        
         vite: {
             plugins: [
                 !production &&

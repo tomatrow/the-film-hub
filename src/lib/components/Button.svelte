@@ -46,7 +46,15 @@
     let clazz = ""
     export { clazz as class }
 
+    export let title: string = undefined
+
     $: classes = makeClasses({ primary, secondary, light, blob, plain })
 </script>
 
-<button class="{clazz} {classes}" {type} on:click {...$$restProps}><slot /></button>
+<button class="{clazz} {classes}" {type} on:click {...$$restProps}>
+    {#if title}
+        {title}
+    {:else}
+        <slot />
+    {/if}
+</button>

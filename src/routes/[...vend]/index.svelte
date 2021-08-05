@@ -2,6 +2,12 @@
     import { graphql } from "$lib/scripts/apollo"
     import { loadPage } from "$lib/scripts/router"
     import { PageFragment } from "$lib/queries/pages"
+    import {
+        MenuItemFragment,
+        LandingPageMenuFragment,
+        LandingPageFooterMenuFragment
+    } from "$lib/queries/menus"
+    import { MediaItemFragment } from "$lib/queries/utility"
 
     export const load = loadPage(
         "Vend",
@@ -17,8 +23,19 @@
                         }
                     }
                 }
+                primary: menu(idType: NAME, id: "Primary Vend") {
+                    ...LandingPageMenuFragment
+                }
+                secondary: menu(idType: NAME, id: "Secondary Vend") {
+                    ...LandingPageMenuFragment
+                    ...LandingPageFooterMenuFragment
+                }
             }
             ${PageFragment}
+            ${MenuItemFragment}
+            ${LandingPageMenuFragment}
+            ${MediaItemFragment}
+            ${LandingPageFooterMenuFragment}
         `
     )
 </script>
@@ -43,12 +60,15 @@
         Meta
     } from "$lib/components"
     import { session } from "$app/stores"
-
-    console.log({ session: $session })
+    import { interpretPrimaryMenu, createMenuLinkProps } from "../_utility"
+    import { smoothEdges } from "$lib/scripts/utility"
 
     export let page: any
+    export let primary: any
+    export let secondary: any
 
-    $links = [{ href: "/filmvista", title: "Are you a film maker?" }]
+    $links = interpretPrimaryMenu(primary.menuItems)
+
     let discounts = {}
 </script>
 
@@ -371,7 +391,14 @@
     </Form>
 </Section>
 
-<Footer>
-    <span>Interested in filming in Vista, CA?</span>
-    <Link href="/filmvista" class="font-bold" plain>click here</Link>
+<Footer
+    blurb={secondary.landingPageFooterMenuFields.blurb}
+    logo={secondary.landingPageMenuFields.logo}
+>
+    {#each smoothEdges(secondary.menuItems).map(createMenuLinkProps) as { fancy, ...props }}
+        <Link
+            {...fancy ? { class: "font-bold", blob: true, primary: true } : { plain: true }}
+            {...props}
+        />
+    {/each}
 </Footer>

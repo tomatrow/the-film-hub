@@ -2,6 +2,12 @@
     import { graphql } from "$lib/scripts/apollo"
     import { loadPage } from "$lib/scripts/router"
     import { PageFragment } from "$lib/queries/pages"
+    import {
+        MenuItemFragment,
+        LandingPageMenuFragment,
+        LandingPageFooterMenuFragment
+    } from "$lib/queries/menus"
+    import { MediaItemFragment } from "$lib/queries/utility"
 
     export const load = loadPage(
         "Film",
@@ -17,8 +23,19 @@
                         }
                     }
                 }
+                primary: menu(idType: NAME, id: "Primary Film") {
+                    ...LandingPageMenuFragment
+                }
+                secondary: menu(idType: NAME, id: "Secondary Film") {
+                    ...LandingPageMenuFragment
+                    ...LandingPageFooterMenuFragment
+                }
             }
             ${PageFragment}
+            ${MenuItemFragment}
+            ${LandingPageMenuFragment}
+            ${MediaItemFragment}
+            ${LandingPageFooterMenuFragment}
         `
     )
 </script>
@@ -31,6 +48,8 @@
     import { defaults } from "$lib/components/Field.svelte"
     import { locations } from "$lib/common/data"
     import DiscountSection from "$lib/components/DiscountSection.svelte"
+    import { interpretPrimaryMenu, createMenuLinkProps } from "../_utility"
+    import { smoothEdges } from "$lib/scripts/utility"
     import {
         Link,
         Section,
@@ -43,17 +62,16 @@
         Field,
         TestimonialSection,
         Meta
-    } from "../../lib/components"
+    } from "$lib/components"
 
     export let page: any
+    export let primary: any
+    export let secondary: any
 
-    $links = [
-        { href: "/stages", title: "Stages & Set", rel: "external" },
-        { href: "/vendvista", title: "Are you a vendor?" }
-    ]
+    $links = interpretPrimaryMenu(primary.menuItems)
 </script>
 
-<Meta title={page.title} />
+<Meta title={page.title} sep={page.seo} />
 
 <Hero>
     <svelte:fragment slot="title"
@@ -142,10 +160,9 @@
         to film makers.
         <br />
         Film Permits for City locations are handled professionally by our quick and courteous Chirmere
-        Harris at the city of Vista. She is your go to girl for any questions on permits, <Link
-            plain
-            href="https://www.cityofvista.com/business/special-event-permits">click here</Link
-        > for permit info or call Chirmere at <Link href="tel:760-643-5206">760-643-5206</Link>.
+        Harris at the city of Vista. She is your go to girl for any questions on permits,
+        <a href="https://www.cityofvista.com/business/special-event-permits">click here</a>
+        for permit info or call Chirmere at <a href="tel:760-643-5206">760-643-5206</a>.
     </svelte:fragment>
     <Form formId="10311" class="md:ml-4 md:w-1/2">
         <Field
@@ -173,7 +190,14 @@
     </Form>
 </FormSection>
 
-<Footer>
-    <span>Interested in becoming a featured film friendly vendor?</span>
-    <Link class="font-bold" href="/vendvista" plain>click here</Link>
+<Footer
+    blurb={secondary.landingPageFooterMenuFields.blurb}
+    logo={secondary.landingPageMenuFields.logo}
+>
+    {#each smoothEdges(secondary.menuItems).map(createMenuLinkProps) as { fancy, ...props }}
+        <Link
+            {...fancy ? { class: "font-bold", blob: true, primary: true } : { plain: true }}
+            {...props}
+        />
+    {/each}
 </Footer>

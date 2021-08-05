@@ -1,4 +1,4 @@
-import type { Load, LoadInput } from "@sveltejs/kit"
+import type { Load, LoadInput, LoadOutput } from "@sveltejs/kit"
 import { query } from "$lib/scripts/apollo"
 
 export const normalizePath = (path: string) =>
@@ -19,7 +19,7 @@ export enum ResourceTypes {
 
 type AnyResource = Resource & Record<string, any>
 
-export function matchResourceMiddleware<R extends Resource = AnyResource>(
+export function matchResource<R extends Resource = AnyResource>(
     { session, page }: LoadInput,
     filter: (resource: R) => boolean = () => true
 ) {
@@ -28,20 +28,16 @@ export function matchResourceMiddleware<R extends Resource = AnyResource>(
 
     const resource = session.resources[normalizePath(page.path)]
 
-    if (!resource)
-        return {
-            status: 404,
-            error: `No resource matches path: '${page.path}'`
-        }
+    if (!resource) return
 
     console.log(`Resource matches path ${page.path}`, resource)
 
     if (!filter(resource)) {
         console.log("Resource did not match filter")
-        return {}
+        return
     }
 
-    session.resource = resource
+    return resource
 }
 
 export function previewVariables({ page }: LoadInput) {
@@ -57,10 +53,9 @@ export function loadResource<R extends Resource = AnyResource>(
     getVariables: (resource: R, input: LoadInput) => object = ({ id }) => ({ id })
 ): Load {
     return async (input: LoadInput) => {
-        const output = matchResourceMiddleware(input, filter)
-        if (output) return output
+        const resource = matchResource(input, filter)
 
-        const { resource } = input.session
+        if (!resource) return
 
         try {
             const graphqlQuery =
@@ -96,12 +91,6 @@ export function loadPage(templateName: string, graphqlQuery: string) {
         resource => {
             const isPage = resource.__typename === ResourceTypes.Page
             const isMatchingTemplate = resource.template.templateName === templateName
-            console.log({
-                isPage,
-                isMatchingTemplate,
-                resourceTemplateName: resource.template.templateName,
-                templateName
-            })
             return isPage && isMatchingTemplate
         },
         ({ id }, input) => ({ id, ...previewVariables(input) })

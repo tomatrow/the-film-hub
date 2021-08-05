@@ -3,68 +3,37 @@ import { graphql } from "$lib/scripts/apollo"
 export const MenuItemFragment = graphql`
     fragment MenuItemFragment on MenuItem {
         id
-        label
-        url
+        title: label
+        href: url
         target
+        landingPageMenuItemFields {
+            fancy
+        }
     }
 `
 
-export const MenuFragment = graphql`
-    fragment MenuFragment on Menu {
+export const LandingPageMenuFragment = `
+    fragment LandingPageMenuFragment on Menu {
         id
-        menuItems {
+        menuItems(where: { parentDatabaseId: 0 }) {
             edges {
                 node {
                     ...MenuItemFragment
                 }
             }
         }
+        landingPageMenuFields {
+            logo {
+                ...MediaItemFragment
+            }
+        }
     }
 `
 
-export const MenusPsuedoFragment = graphql`
-    primary: menus(first: 1, where: { location: PRIMARY }) {
-        edges {
-            node {
-                id
-                menuItems(where: { parentDatabaseId: 0 }) {
-                    edges {
-                        node {
-                            ...MenuItemFragment
-                            childItems {
-                                edges {
-                                    node {
-                                        ...MenuItemFragment
-                                        childItems {
-                                            edges {
-                                                node {
-                                                    ...MenuItemFragment
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    secondary: menus(first: 1, where: { location: VENDVISTA }) {
-        edges {
-            node {
-                ...MenuFragment
-            }
-        }
-    }
-
-    secondary: menus(first: 1, where: { location: FILMVISTA }) {
-        edges {
-            node {
-                ...MenuFragment
-            }
+export const LandingPageFooterMenuFragment = `
+    fragment LandingPageFooterMenuFragment on Menu {
+        landingPageFooterMenuFields {
+            blurb
         }
     }
 `

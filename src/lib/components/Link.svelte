@@ -11,6 +11,7 @@
     export { clazz as class }
 
     export let href: string
+    export let title: string = undefined
 
     function makeClassesPrime(options: ButtonClassOptions) {
         return makeClasses(options)
@@ -19,4 +20,10 @@
     $: classes = makeClassesPrime({ primary, secondary, light, blob, plain })
 </script>
 
-<a class="{classes} {clazz}" {href} on:click {...$$restProps}><slot /></a>
+<a class="{classes} {clazz}" {href} on:click {...$$restProps}>
+    {#if title}
+        {title}
+    {:else}
+        <slot />
+    {/if}
+</a>
