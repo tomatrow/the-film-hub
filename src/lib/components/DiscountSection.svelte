@@ -1,5 +1,5 @@
 <script>
-    import { Hotel, Camera, Dining, People, Sun, Tree } from "../../lib/discount-icons"
+    import { Hotel, Camera, Dining, People, Sun, Tree } from "$lib/discount-icons"
     import LogoSection from "./LogoSection.svelte"
     const logos = [
         { title: "Dining", icon: Dining },
