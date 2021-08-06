@@ -72,7 +72,7 @@
     let discounts = {}
 </script>
 
-<!-- <Meta title={page.title} /> -->
+<Meta title={page.title} seo={page.seo} />
 
 <Hero>
     <svelte:fragment slot="title">

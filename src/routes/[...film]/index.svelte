@@ -71,7 +71,7 @@
     $links = interpretPrimaryMenu(primary.menuItems)
 </script>
 
-<Meta title={page.title} sep={page.seo} />
+<Meta title={page.title} seo={page.seo} />
 
 <Hero>
     <svelte:fragment slot="title"
