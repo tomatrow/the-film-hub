@@ -40,8 +40,8 @@ specifiers:
 devDependencies:
   '@apollo/client': 3.4.5_graphql@15.5.1
   '@felte/reporter-tippy': 0.2.9_tippy.js@6.3.1
-  '@sveltejs/adapter-node': 1.0.0-next.38
-  '@sveltejs/adapter-static': 1.0.0-next.15
+  '@sveltejs/adapter-node': 1.0.0-next.39
+  '@sveltejs/adapter-static': 1.0.0-next.16
   '@sveltejs/kit': 1.0.0-next.141_svelte@3.42.1
   '@tailwindcss/aspect-ratio': 0.2.1_tailwindcss@2.2.7
   autoprefixer: 10.3.1_postcss@8.3.6
@@ -89,9 +89,9 @@ packages:
         optional: true
     dependencies:
       '@graphql-typed-document-node/core': 3.1.0_graphql@15.5.1
-      '@wry/context': 0.6.0
-      '@wry/equality': 0.5.1
-      '@wry/trie': 0.3.0
+      '@wry/context': 0.6.1
+      '@wry/equality': 0.5.2
+      '@wry/trie': 0.3.1
       graphql: 15.5.1
       graphql-tag: 2.12.5_graphql@15.5.1
       hoist-non-react-statics: 3.3.2
@@ -189,15 +189,15 @@ packages:
       picomatch: 2.3.0
     dev: true
 
-  /@sveltejs/adapter-node/1.0.0-next.38:
-    resolution: {integrity: sha512-VXBGZd/zlcRL5xONt0yF57XFjW4rL0chOsysIfNe1iFfLriH9m4cIfDr5WtQyVtsb9L1dwnDXZzjCbUEcouN+w==}
+  /@sveltejs/adapter-node/1.0.0-next.39:
+    resolution: {integrity: sha512-5esWwnomzO3Oq6Ie5HQ64lpTTESvlPfN/MS9DtyjkVEna2pgNp2/Pi+6eIunAYyPzkvaq2Ac6ngqQJ3QU1ESEA==}
     dependencies:
-      esbuild: 0.12.17
+      esbuild: 0.12.18
       tiny-glob: 0.2.9
     dev: true
 
-  /@sveltejs/adapter-static/1.0.0-next.15:
-    resolution: {integrity: sha512-E7Qze+vnPZmz0rU7eIWI2lDJlK5emQJ6GWcIxdDHUEZ7mgzBDpkQJJAX8xJ2Wt3BTcHVMMNvTYRoYBidfoIDNQ==}
+  /@sveltejs/adapter-static/1.0.0-next.16:
+    resolution: {integrity: sha512-xGFcg+GHF0BL1fyWx2vCzlYj4S4R+Od9cF00soo1TVp/scGOi1G9grSYYW4x5H+iDn1sscoJ65OGBGWIcOgrXg==}
     dev: true
 
   /@sveltejs/kit/1.0.0-next.141_svelte@3.42.1:
@@ -257,8 +257,8 @@ packages:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
 
-  /@types/node/16.4.12:
-    resolution: {integrity: sha512-zxrTNFl9Z8boMJXs6ieqZP0wAhvkdzmHSxTlJabM16cf5G9xBc1uPRH5Bbv2omEDDiM8MzTfqTJXBf0Ba4xFWA==}
+  /@types/node/16.4.13:
+    resolution: {integrity: sha512-bLL69sKtd25w7p1nvg9pigE4gtKVpGTPojBFLMkGHXuUgap2sLqQt2qUnqmVCDfzGUL0DRNZP+1prIZJbMeAXg==}
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -272,29 +272,29 @@ packages:
   /@types/sass/1.16.1:
     resolution: {integrity: sha512-iZUcRrGuz/Tbg3loODpW7vrQJkUtpY2fFSf4ELqqkApcS2TkZ1msk7ie8iZPB86lDOP8QOTTmuvWjc5S0R9OjQ==}
     dependencies:
-      '@types/node': 16.4.12
+      '@types/node': 16.4.13
     dev: true
 
   /@types/zen-observable/0.8.3:
     resolution: {integrity: sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==}
     dev: true
 
-  /@wry/context/0.6.0:
-    resolution: {integrity: sha512-sAgendOXR8dM7stJw3FusRxFHF/ZinU0lffsA2YTyyIOfic86JX02qlPqPVqJNZJPAxFt+2EE8bvq6ZlS0Kf+Q==}
+  /@wry/context/0.6.1:
+    resolution: {integrity: sha512-LOmVnY1iTU2D8tv4Xf6MVMZZ+juIJ87Kt/plMijjN20NMAXGmH4u8bS1t0uT74cZ5gwpocYueV58YwyI8y+GKw==}
     engines: {node: '>=8'}
     dependencies:
       tslib: 2.3.0
     dev: true
 
-  /@wry/equality/0.5.1:
-    resolution: {integrity: sha512-FZKbdpbcVcbDxQrKcaBClNsQaMg9nof1RKM7mReJe5DKUzM5u8S7T+PqwNqvib5O2j2xxF1R4p5O3+b6baTrbw==}
+  /@wry/equality/0.5.2:
+    resolution: {integrity: sha512-oVMxbUXL48EV/C0/M7gLVsoK6qRHPS85x8zECofEZOVvxGmIPLA9o5Z27cc2PoAyZz1S2VoM2A7FLAnpfGlneA==}
     engines: {node: '>=8'}
     dependencies:
       tslib: 2.3.0
     dev: true
 
-  /@wry/trie/0.3.0:
-    resolution: {integrity: sha512-Yw1akIogPhAT6XPYsRHlZZIS0tIGmAl9EYXHi2scf7LPKKqdqmow/Hu4kEqP2cJR3EjaU/9L0ZlAjFf3hFxmug==}
+  /@wry/trie/0.3.1:
+    resolution: {integrity: sha512-WwB53ikYudh9pIorgxrkHKrQZcCqNM/Q/bDzZBffEaGUKGuHrRb3zZUT9Sh2qw9yogC7SsdRmQ1ER0pqvd3bfw==}
     engines: {node: '>=8'}
     dependencies:
       tslib: 2.3.0
@@ -399,7 +399,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001249
       colorette: 1.2.2
-      electron-to-chromium: 1.3.796
+      electron-to-chromium: 1.3.798
       escalade: 3.1.1
       node-releases: 1.1.73
     dev: true
@@ -721,8 +721,8 @@ packages:
       domhandler: 4.2.0
     dev: true
 
-  /electron-to-chromium/1.3.796:
-    resolution: {integrity: sha512-agwJFgM0FUC1UPPbQ4aII3HamaaJ09fqWGAWYHmzxDWqdmTleCHyyA0kt3fJlTd5M440IaeuBfzXzXzCotnZcQ==}
+  /electron-to-chromium/1.3.798:
+    resolution: {integrity: sha512-fwsr6oXAORoV9a6Ak2vMCdXfmHIpAGgpOGesulS1cbGgJmrMl3H+GicUyRG3t+z9uHTMrIuMTleFDW+EUFYT3g==}
     dev: true
 
   /entities/2.2.0:
@@ -735,8 +735,8 @@ packages:
       is-arrayish: 0.2.1
     dev: true
 
-  /esbuild/0.12.17:
-    resolution: {integrity: sha512-GshKJyVYUnlSXIZj/NheC2O0Kblh42CS7P1wJyTbbIHevTG4jYMS9NNw8EOd8dDWD0dzydYHS01MpZoUcQXB4g==}
+  /esbuild/0.12.18:
+    resolution: {integrity: sha512-arWhBQSy+oiBAp8VRRCFvAU+3jyf0gGacABLO3haMHboXCDjzq4WUqyQklst2XRuFS8MXgap+9uvODqj9Iygpg==}
     hasBin: true
     requiresBuild: true
     dev: true
@@ -828,7 +828,7 @@ packages:
     resolution: {integrity: sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==}
     engines: {node: '>=12'}
     dependencies:
-      graceful-fs: 4.2.6
+      graceful-fs: 4.2.8
       jsonfile: 6.1.0
       universalify: 2.0.0
     dev: true
@@ -881,8 +881,8 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
-  /graceful-fs/4.2.6:
-    resolution: {integrity: sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==}
+  /graceful-fs/4.2.8:
+    resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
     dev: true
 
   /graphql-tag/2.12.5_graphql@15.5.1:
@@ -1044,7 +1044,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.6
+      graceful-fs: 4.2.8
     dev: true
 
   /kleur/4.1.4:
@@ -1200,8 +1200,8 @@ packages:
   /optimism/0.16.1:
     resolution: {integrity: sha512-64i+Uw3otrndfq5kaoGNoY7pvOhSsjFEN4bdEFh80MWVk/dbgJfMv7VFDeCT8LxNAlEVhQmdVEbfE7X2nWNIIg==}
     dependencies:
-      '@wry/context': 0.6.0
-      '@wry/trie': 0.3.0
+      '@wry/context': 0.6.1
+      '@wry/trie': 0.3.1
     dev: true
 
   /parent-module/1.0.1:
@@ -1720,8 +1720,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /rollup/2.55.1:
-    resolution: {integrity: sha512-1P9w5fpb6b4qroePh8vHKGIvPNxwoCQhjJpIqfZGHLKpZ0xcU2/XBmFxFbc9697/6bmHpmFTLk5R1dAQhFSo0g==}
+  /rollup/2.56.0:
+    resolution: {integrity: sha512-weEafgbjbHCnrtJPNyCrhYnjP62AkF04P0BcV/1mofy1+gytWln4VVB1OK462cq2EAyWzRDpTMheSP/o+quoiA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -2024,10 +2024,10 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      esbuild: 0.12.17
+      esbuild: 0.12.18
       postcss: 8.3.6
       resolve: 1.20.0
-      rollup: 2.55.1
+      rollup: 2.56.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
