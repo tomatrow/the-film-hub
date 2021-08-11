@@ -10,11 +10,11 @@
         "build-icons": "fish --command 'trash src/lib/icons; and node scripts/icons src/lib/icons && touch src/lib/icons/*'"
     },
     "devDependencies": {
-        "@apollo/client": "^3.4.5",
+        "@apollo/client": "^3.4.7",
         "@felte/reporter-tippy": "^0.2.9",
         "@sveltejs/adapter-node": "next",
         "@sveltejs/adapter-static": "next",
-        "@sveltejs/kit": "1.0.0-next.141",
+        "@sveltejs/kit": "^1.0.0-next.146",
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "autoprefixer": "^10.3.1",
         "cssnano": "^5.0.7",
@@ -37,7 +37,7 @@
         "sass": "^1.37.5",
         "svelte": "^3.42.1",
         "svelte-actions": "^0.1.0",
-        "svelte-carousel": "^1.0.10",
+        "svelte-carousel": "^1.0.12",
         "svelte-filepond": "^0.0.1",
         "svelte-portal": "^2.1.2",
         "svelte-preprocess": "^4.7.4",

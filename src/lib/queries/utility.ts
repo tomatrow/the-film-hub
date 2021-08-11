@@ -12,7 +12,7 @@ export const MediaItemFragment = graphql`
     fragment MediaItemFragment on MediaItem {
         id
         alt: altText
-        src: sourceUrl(size: LARGE)
+        src: mediaItemUrl
         srcset: srcSet
     }
 `
@@ -20,7 +20,7 @@ export const MediaItemFragment = graphql`
 export const TermFragment = graphql`
     fragment TermFragment on TermNode {
         id
-        hrwf: uri
+        href: uri
         name
     }
 `

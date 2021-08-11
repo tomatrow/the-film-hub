@@ -2,7 +2,6 @@
     import ContactForm7 from "./ContactForm7.svelte"
     export { clazz as class }
     let clazz = ""
-    console.log({ origin: import.meta.env.VITE_CF7_ORIGIN })
 </script>
 
 <ContactForm7

@@ -1,7 +1,14 @@
 <script lang="ts" context="module">
     import { graphql } from "$lib/scripts/apollo"
     import { loadPage } from "$lib/scripts/router"
-    import { PageFragment } from "$lib/queries/pages"
+    import {
+        PageFragment,
+        LandingPageFieldsPsuedoFragment,
+        DiscountSectionPsuedoFragment,
+        FormFragment,
+        CaptionFragment,
+        TestimonialFragment
+    } from "$lib/queries/pages"
     import {
         MenuItemFragment,
         LandingPageMenuFragment,
@@ -17,8 +24,33 @@
                     ...PageFragment
                     template {
                         ... on Template_Film {
+                            landingPageFields {
+                                ${LandingPageFieldsPsuedoFragment}
+                            }
                             filmPageFields {
-                                test
+                                testimonials {
+                                    ...TestimonialFragment
+                                }
+                                discountSection {
+                                    ${DiscountSectionPsuedoFragment}
+                                }
+                                locations {
+                                    ...MediaItemFragment
+                                    ...CaptionFragment
+                                }
+                                gallery {
+                                    ...MediaItemFragment
+                                }
+                                contactSection {
+                                    title 
+                                    contentHtml
+                                    logo {
+                                        ...MediaItemFragment
+                                    }
+                                    form {
+                                        ...FormFragment
+                                    }
+                                }
                             }
                         }
                     }
@@ -36,6 +68,9 @@
             ${LandingPageMenuFragment}
             ${MediaItemFragment}
             ${LandingPageFooterMenuFragment}
+            ${FormFragment}
+            ${TestimonialFragment}
+            ${CaptionFragment}
         `
     )
 </script>
@@ -43,161 +78,104 @@
 <script lang="ts">
     import Gallery from "./_Gallery.svelte"
     import { Footer } from "$lib/app"
-    import { links } from "$lib/common/stores"
     import { assets } from "$app/paths"
     import { defaults } from "$lib/components/Field.svelte"
-    import { locations } from "$lib/common/data"
-    import DiscountSection from "$lib/components/DiscountSection.svelte"
     import { interpretPrimaryMenu, createMenuLinkProps } from "../_utility"
     import { smoothEdges } from "$lib/scripts/utility"
+    import { brandImage, navLinks } from "$lib/app/Nav.svelte"
     import {
         Link,
         Section,
         LogoSection,
         VideoSection,
+        DiscountSection,
         FormSection,
         Hero,
         Form,
         Button,
         Field,
         TestimonialSection,
-        Meta
+        Meta,
+        Fields
     } from "$lib/components"
 
     export let page: any
     export let primary: any
     export let secondary: any
 
-    $links = interpretPrimaryMenu(primary.menuItems)
+    $brandImage = primary.landingPageMenuFields.logo
+    $navLinks = interpretPrimaryMenu(primary.menuItems)
 </script>
 
-<Meta title={page.title} seo={page.seo} />
+<Meta title={page.title} />
 
-<Hero>
-    <svelte:fragment slot="title"
-        >Register to get your Film Friendly Badge for Discounts</svelte:fragment
-    >
-    <svelte:fragment slot="blurb"
-        >Vista, Ca is the perfect, versatile, film-friendly backdrop for all film projects that need
-        a viable and competitive alternative.</svelte:fragment
-    >
-    <Form formId="10311" class="w-full md:w-1/2">
-        <Field
-            required
-            name="confimation_documentation"
-            type="file"
-            accept="image/*,.doc,.docx,.pdf"
-        >
-            Upload Image: Permit number document
-        </Field>
-        <Field {...defaults.text} required name="full_name">Name</Field>
-        <Field {...defaults.text} required name="company">Company</Field>
-        <Field {...defaults.text} required name="phone" type="tel">Phone</Field>
-        <Field {...defaults.text} required name="email" type="email">Email</Field>
-        <Field {...defaults.text} required name="project_name">Project Name</Field>
-        <Field {...defaults.text} required name="filming_dates">Filming Dates</Field>
-
-        <Button
-            type="submit"
-            class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
-            slot="submit"
-        >
-            Register Your Permit Number Here
-        </Button>
+<Hero {...page.template.landingPageFields.heroSection}>
+    <Form formId={page.template.filmPageFields.contactSection.form.formId} class="w-full md:w-1/2">
+        <h2 class="text-4xl">{page.template.filmPageFields.contactSection.form.title}</h2>
+        <Fields fullForm={page.template.filmPageFields.contactSection.form.fullForm} />
     </Form>
 </Hero>
 
-<VideoSection>
-    <h2 class="text-primary uppercase font-bold text-3xl">
-        Vista California - A Rare Find for Film makers <br /> Every Street is a Unique Movie Set
-    </h2>
-    <p>
-        The historic district is a premier “Americana” Film Set; comprised of independent and family
-        owned restaurants, pubs and shops. Its charm lies in the preservation of its historic
-        buildings and its underlying artistic vibe.
-    </p>
-    <p>
-        Through the years, Musicians, painters, sculptors and writers have all added to its unique
-        look and feel. Every street is a unique movie set. As a cinematographer, you will feel like
-        a kid in a candy shop in this one of a kind environment.
-    </p>
-    <p>
-        The surrounding hillsides provide stunning locations such as French Farmhouse estates,
-        castles, western sets and other unique and hard to find locations.
-    </p>
-    <p>
-        Vista is a Climactic Wonderland and has been rated the best weather in the country; boasting
-        340 exterior shooting days out of the year.
-    </p>
-</VideoSection>
+<VideoSection {...page.template.landingPageFields.videoSection} />
 
-<DiscountSection />
+<DiscountSection {...page.template.filmPageFields.discountSection} />
 
-<TestimonialSection />
+<TestimonialSection
+    testimonials={page.template.filmPageFields.testimonials.map(
+        ({ testimonialFields }) => testimonialFields
+    )}
+/>
 
 <Section class="space-y-4">
     <h2 class="text-primary text-center uppercase font-bold text-3xl">
         Popular Vista public locations
     </h2>
     <div class="grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6 grid">
-        {#each locations as { title, image }}
+        {#each page.template.filmPageFields.locations as { captionHtml, ...image }}
             <div class="space-y-4 flex flex-col justify-start w-full h-full">
-                <img class="h-44 object-cover" src={image} alt="" />
-                <span class="text-secondary text-center uppercase">{title}</span>
+                <img class="h-44 object-cover" {...image} />
+                {#if captionHtml}
+                    <span class="text-secondary text-center uppercase">{@html captionHtml}</span>
+                {/if}
             </div>
         {/each}
     </div>
 </Section>
 
 <Section class="flex py-4">
-    <Gallery />
+    <Gallery items={page.template.filmPageFields.gallery} />
 </Section>
 
-<FormSection>
-    <svelte:fragment slot="title">Register Your Permit number Now</svelte:fragment>
-    <svelte:fragment slot="blurb"
-        >Receive a complete directory of all “Film Friendly” vendors who offer exclusive discounts
-        to film makers.
-        <br />
-        Film Permits for City locations are handled professionally by our quick and courteous Chirmere
-        Harris at the city of Vista. She is your go to girl for any questions on permits,
-        <a href="https://www.cityofvista.com/business/special-event-permits">click here</a>
-        for permit info or call Chirmere at <a href="tel:760-643-5206">760-643-5206</a>.
-    </svelte:fragment>
-    <Form formId="10311" class="md:ml-4 md:w-1/2">
-        <Field
-            required
-            name="confimation_documentation"
-            type="file"
-            accept="image/*,.doc,.docx,.pdf"
-        >
-            Upload Image: Permit number document
-        </Field>
-        <Field {...defaults.text} required name="full_name">Name</Field>
-        <Field {...defaults.text} required name="company">Company</Field>
-        <Field {...defaults.text} required name="phone" type="tel">Phone</Field>
-        <Field {...defaults.text} required name="email" type="email">Email</Field>
-        <Field {...defaults.text} required name="project_name">Project Name</Field>
-        <Field {...defaults.text} required name="filming_dates">Filming Dates</Field>
-
-        <Button
-            type="submit"
-            class="mt-auto mx-auto text-black text-center uppercase font-bold text-3xl md:text-xl lg:text-3xl"
-            slot="submit"
-        >
-            Register Your Permit Number Here
-        </Button>
+<Section
+    rootProps={{ class: "bg-primary" }}
+    class="space-y-4 md:space-y-0 flex flex-col md:flex-row p-6 text-white"
+>
+    <div class="space-y-2 flex flex-col justify-around">
+        <div class="space-y-2 sm:space-y-0 sm:space-x-2 flex flex-col sm:flex-row">
+            <div
+                class="h-44 flex-shrink-0 w-full sm:w-5/12 sm:h-auto bg-center bg-contain bg-no-repeat"
+                style="background-image: url({page.template.filmPageFields.contactSection.logo
+                    .src})"
+            />
+            <h2 class="py-12 pr-4 uppercase font-bold text-5xl md:text-4xl">
+                {page.template.filmPageFields.contactSection.title}
+            </h2>
+        </div>
+        <div class="injected-content text-white">
+            {@html page.template.filmPageFields.contactSection.contentHtml}
+        </div>
+    </div>
+    <Form formId={page.template.filmPageFields.contactSection.form.formId} class="md:ml-4 md:w-1/2">
+        <h2 class="text-4xl">{page.template.filmPageFields.contactSection.form.title}</h2>
+        <Fields fullForm={page.template.filmPageFields.contactSection.form.fullForm} />
     </Form>
-</FormSection>
+</Section>
 
 <Footer
     blurb={secondary.landingPageFooterMenuFields.blurb}
     logo={secondary.landingPageMenuFields.logo}
 >
-    {#each smoothEdges(secondary.menuItems).map(createMenuLinkProps) as { fancy, ...props }}
-        <Link
-            {...fancy ? { class: "font-bold", blob: true, primary: true } : { plain: true }}
-            {...props}
-        />
+    {#each smoothEdges(secondary.menuItems).map(createMenuLinkProps) as { ...props }}
+        <Link plain {...props} />
     {/each}
 </Footer>

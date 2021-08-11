@@ -1,4 +1,4 @@
-export interface AcfImage { 
+export interface AcfMedia { 
     src: string
     alt: string 
     srcset: string

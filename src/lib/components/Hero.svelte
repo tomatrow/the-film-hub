@@ -1,21 +1,24 @@
-<script>
-    import { backgrounds } from "../common/data"
+<script lang="ts">
+    import { backgrounds } from "$lib/common/data"
     import Section from "./Section.svelte"
+    import type { AcfMedia } from "$lib/index.type"
+
+    export let backgroundImage: AcfMedia
+    export let title: string
+    export let blurb: string
 </script>
 
 <Section
-    rootProps={{
-        style: `--background: url(${backgrounds.about})`,
-        class: "hero"
-    }}
+    --background="url({backgroundImage.src})"
+    rootProps={{ class: "hero" }}
     class="space-y-4 md:space-y-0 md:space-x-8 flex items-center flex-col md:flex-row p-6"
 >
     <div class="text-light space-y-2">
         <p class="uppercase font-bold text-5xl">
-            <slot name="title" />
+            {title}
         </p>
         <p class="text-3xl">
-            <slot name="blurb" />
+            {blurb}
         </p>
     </div>
 

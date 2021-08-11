@@ -1,15 +1,4 @@
-<script>
-    export let size = "100%"
-    let clazz = ""
-    export { clazz as class }
-    if (size !== "100%") {
-        size =
-            size.slice(-1) === "x" ? size.slice(0, size.length - 1) + "em" : parseInt(size) + "px"
-    }
-</script>
-
 <svg
-    class={clazz}
     version="1.1"
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
@@ -19,9 +8,20 @@
     viewBox="0 0 1080 1080"
     style="enable-background:new 0 0 1080 1080;"
     xml:space="preserve"
-    width={size}
-    height={size}
+    width="100%"
+    height="100%"
 >
+    <style>
+        .st0 {
+            fill: none;
+            stroke-width: 28.6795;
+            stroke: #000000;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-miterlimit: 10;
+        }
+    </style>
+
     <path
         class="st0"
         d="M726.4,726.3H267.5c-7.9,0-14.3-6.4-14.3-14.3V453.9c0-7.9,6.4-14.3,14.3-14.3h458.9c7.9,0,14.3,6.4,14.3,14.3
@@ -46,14 +46,3 @@
 		C611.9,869.7,611.8,869.8,611.7,869.9C611.7,869.9,611.7,869.9,611.7,869.9z"
     />
 </svg>
-
-<style>
-    .st0 {
-        fill: none;
-        stroke-width: 28.6795;
-        stroke: #000000;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-miterlimit: 10;
-    }
-</style>

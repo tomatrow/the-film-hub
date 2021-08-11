@@ -46,6 +46,5 @@
         <slot name="success" message={successMessage} />
     {:else}
         <slot />
-        <slot name="submit" />
     {/if}
 </form>

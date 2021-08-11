@@ -10,19 +10,22 @@
     export const defaults = {
         text: {
             class: "border border-gray-400",
-            rootProps: { class: "flex flex-col" },
-            required: true
+            rootProps: { class: "flex flex-col" }
         },
         toggle: {
             class: "mr-2 flex-shrink-0",
             rootProps: { class: "flex flex-row-reverse justify-end items-center" }
+        },
+        textarea: {
+            class: "border border-gray-400 min-h-[3rem]",
+            rootProps: { class: "flex flex-col" }
         }
     }
 </script>
 
 <script lang="ts">
     import FilePondInput from "./FilePondInput.svelte"
-    import { autoResizeTextArea } from "../common/actions"
+    import { autoResizeTextArea } from "$lib/common/actions"
 
     export let type: string = undefined
     export let checked: boolean = undefined

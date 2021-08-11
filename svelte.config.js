@@ -28,16 +28,16 @@ export default {
         router: false,
         
 
-        // paths: {
-        //     base: production ? "/wp-content/plugins/thread-and-point/the-film-hub/build" : "",
-        //     assets: production
-        //         ? "https://thefilmhubinc.com/wp-content/plugins/thread-and-point/the-film-hub/build"
-        //         : ""
-        // },
+        paths: {
+            base: production ? "/wp-content/plugins/thread-and-point/the-film-hub/build" : "",
+            assets: production
+                ? "https://thefilmhubinc.com/wp-content/plugins/thread-and-point/the-film-hub/build"
+                : ""
+        },
 
         prerender: {
             crawl: false,
-            pages: ["/filmvista", "/vendvista"]
+            pages: ["/filmvista2", "/vendvista2"]
         },
         
         vite: {

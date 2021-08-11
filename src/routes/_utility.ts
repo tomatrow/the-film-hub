@@ -1,27 +1,27 @@
 import { smoothEdges } from "$lib/scripts/utility"
 
-export function createMenuLinkProps({ href, target, title, landingPageMenuItemFields }) {
+export function createMenuLinkProps({ href, target, title }) {
     return {
         href,
         target,
-        title,
-        fancy: !!landingPageMenuItemFields.fancy
+        title
     }
 }
 
 export function interpretPrimaryMenu(menuItems) {
     return smoothEdges(menuItems)
         .map(createMenuLinkProps)
-        .map(props => {
-            const looks = props.fancy
-                ? {
-                      primary: true,
-                      blob: true,
-                      class: "text-center uppercase text-xs"
-                  }
-                : {
-                      class: "text-center uppercase font-bold text-xs"
-                  }
+        .map((props, index, array) => {
+            const looks =
+                index === array.length - 1
+                    ? {
+                          primary: true,
+                          blob: true,
+                          class: "text-center uppercase text-xs"
+                      }
+                    : {
+                          class: "text-center uppercase font-bold text-xs"
+                      }
             return { ...props, ...looks }
         })
 }

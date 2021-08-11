@@ -6,9 +6,6 @@ export const MenuItemFragment = graphql`
         title: label
         href: url
         target
-        landingPageMenuItemFields {
-            fancy
-        }
     }
 `
 

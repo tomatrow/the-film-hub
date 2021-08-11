@@ -1,15 +1,4 @@
-<script>
-    export let size = "100%"
-    let clazz = ""
-    export { clazz as class }
-    if (size !== "100%") {
-        size =
-            size.slice(-1) === "x" ? size.slice(0, size.length - 1) + "em" : parseInt(size) + "px"
-    }
-</script>
-
 <svg
-    class={clazz}
     version="1.1"
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
@@ -19,8 +8,8 @@
     viewBox="0 0 1080 1080"
     style="enable-background:new 0 0 1080 1080;"
     xml:space="preserve"
-    width={size}
-    height={size}
+    width="100%"
+    height="100%"
 >
     <g>
         <path
