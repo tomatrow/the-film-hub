@@ -42,8 +42,8 @@ export function matchResource<R extends Resource = AnyResource>(
 
 export function previewVariables({ page }: LoadInput) {
     return {
-        isPreview: page.query.has("preview"),
-        nonce: page.query.get("nonce")
+        isPreview: false,//  page.query.has("preview"),
+        nonce: null //page.query.get("nonce")
     }
 }
 
